@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -15,14 +16,15 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Button Barcodebutton = (Button) findViewById(R.id.buttonBarcode);
-        Barcodebutton.setOnClickListener(new view.OnClickListener(){
+        Barcodebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 openBarcode();
-                                      }
-                                  });
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +36,7 @@ public class MainMenu extends AppCompatActivity {
         });
     }
     public void openBarcode(){
-        Intent BarcodeIntent = new intent (this,BarcodeScan.class);
+        Intent BarcodeIntent = new Intent (this,BarcodeScan.class);
         startActivity(BarcodeIntent);
 
     }
