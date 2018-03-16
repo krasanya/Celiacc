@@ -21,15 +21,14 @@
             android:label="@string/title_activity_main_menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateUser" />
-        <activity android:name=".Search" />
         <activity android:name=".NewUserForm" />
         <activity
             android:name=".ProductSearch"
             android:label="@string/title_activity_product_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SearchTabs"
-            android:label="@string/title_activity_search_tabs"
+            android:name=".Search"
+            android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
