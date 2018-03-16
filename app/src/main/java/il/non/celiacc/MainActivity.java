@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final Button btLogin = (Button) findViewById(R.id.btLogin);
         final TextView tvNewUser = (TextView) findViewById(R.id.tvNewUser);
 
         tvNewUser.setOnClickListener(new  View.OnClickListener(){
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(registerIntent);
             }
         });
-        Button Menubutton = (Button) findViewById(R.id.buttonSearch);
+        Button Menubutton = (Button) findViewById(R.id.btLogin);
         Menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
