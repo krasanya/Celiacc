@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText etUsername = {EditText}  findViewById(R.id.etUsername);
-        final EditText etPassword = {EditText} findViewById(R.id.etPassword);
-        final Button btLogin = {Button} findViewById(R.id.btLogin);
-        final TextView tvNewUser = {TextView} findViewById(R.id.tvNewUser);
+        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
+        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final Button btLogin = (Button) findViewById(R.id.btLogin);
+        final TextView tvNewUser = (TextView) findViewById(R.id.tvNewUser);
 
         tvNewUser.setOnClickListener(new  View.OnClickListener(){
             @Override
@@ -27,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(registerIntent);
             }
         });
-
+        Button Menubutton = (Button) findViewById(R.id.buttonSearch);
+        Menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent MenuIntent = new Intent (MainActivity.this,MainMenu.class);
+                startActivity(MenuIntent);
+            }
+        });
 
 
     }

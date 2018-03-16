@@ -16,28 +16,40 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Button Barcodebutton = (Button) findViewById(R.id.buttonBarcode);
+        Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);
+        Button Exitbutton = (Button) findViewById(R.id.buttonExitMain);
+        Button Searchbutton = (Button) findViewById(R.id.buttonSearch);
         Barcodebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openBarcode();
+                Intent BarcodeIntent = new Intent (MainMenu.this,BarcodeScan.class);
+                startActivity(BarcodeIntent);
+            }
+        });
+        Updatebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent UpdateIntent = new Intent (MainMenu.this,UpdateUser.class);
+                startActivity(UpdateIntent);
+            }
+        });
+        Exitbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ExitIntent = new Intent (MainMenu.this,MainActivity.class);
+                startActivity(ExitIntent);
+            }
+        });
+        Searchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent SearchIntent = new Intent (MainMenu.this,Search.class);
+                startActivity(SearchIntent);
             }
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-    public void openBarcode(){
-        Intent BarcodeIntent = new Intent (this,BarcodeScan.class);
-        startActivity(BarcodeIntent);
 
     }
 }

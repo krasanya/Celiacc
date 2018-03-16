@@ -13,12 +13,12 @@ public class NewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
-        final EditText etEmail = {EditText}  findViewById(R.id.etEmail);
-        final EditText etUsername = {EditText}  findViewById(R.id.etUsername);
-        final EditText etFirstname = {EditText}  findViewById(R.id.etFirstname);
-        final EditText etLastname = {EditText}  findViewById(R.id.etLastname);
-        final EditText etPass = {EditText} findViewById(R.id.etPass);
-        final CheckBox cbIsmember = {CheckBox} findViewById(R.id.cbIsmember);
-        final Button btRegister = {btRegister} findViewById(R.id.btRegister);
+        final EditText etEmail = (EditText)  findViewById(R.id.etEmail);
+        final EditText etUsername =(EditText)  findViewById(R.id.etUsername);
+        final EditText etFirstname = (EditText)  findViewById(R.id.etFirstname);
+        final EditText etLastname = (EditText)  findViewById(R.id.etLastname);
+        final EditText etPass = (EditText) findViewById(R.id.etPass);
+        final CheckBox cbIsmember = (CheckBox) findViewById(R.id.cbIsmember);
+        final Button btRegister = (Button) findViewById(R.id.btRegister);
     }
 }
