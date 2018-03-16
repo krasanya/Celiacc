@@ -17,21 +17,25 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final TextView tvNewUser = (TextView) findViewById(R.id.tvNewUser);
+        final Button btLogin = (Button) findViewById(R.id.btLogin);
+        final Button btRegister = (Button) findViewById(R.id.btRegister);
 
-        tvNewUser.setOnClickListener(new  View.OnClickListener(){
-            @Override
-                    public void onClick(View v){
-                Intent registerIntent = new Intent(MainActivity.this , NewUserActivity.class);
-                MainActivity.this.startActivity(registerIntent);
-            }
-        });
+
         Button Menubutton = (Button) findViewById(R.id.btLogin);
         Menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent MenuIntent = new Intent (MainActivity.this,MainMenu.class);
                 startActivity(MenuIntent);
+            }
+        });
+
+        Button Registerbutton = (Button) findViewById(R.id.btRegister);
+        Menubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent NewUserIntent = new Intent (MainActivity.this,NewUserActivity.class);
+                startActivity(NewUserIntent);
             }
         });
 
