@@ -1,3 +1,5 @@
+package il.non.celiacc;
+
 import java.util.Date;
 
 public class USERS {
@@ -25,7 +27,7 @@ public class USERS {
         this.expireDate = null;
     }
 
-   /* public USERS(String Email, String Username,String FirstName, String LastName,String Password) {
+   /* public il.non.celiacc.USERS(String Email, String Username,String FirstName, String LastName,String Password) {
         this.Email = Email;
         this.Username = Username;
         this.FirstName = FirstName;
