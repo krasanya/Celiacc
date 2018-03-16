@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Celiacc</string>
     <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_search_by_hand">SearchByHand</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_product_search">ProductSearch</string>
+    <string name="title_activity_search_tabs">SearchTabs</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
