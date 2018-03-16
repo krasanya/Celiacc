@@ -18,8 +18,6 @@ public class NewUserForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user_form);
 
-        // variables
-
         final Button btRegister = (Button) findViewById(R.id.btRegister);
 
 

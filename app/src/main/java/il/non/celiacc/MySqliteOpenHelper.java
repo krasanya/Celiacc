@@ -31,7 +31,7 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
         }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE" + table_name + "(Email String PRIMARY KEY AUTOINCREMENT, Username String,FirstName String,LastName String,Password integer ,IsMember boolean,memberNum integer,Phone string,id integer,expireDate date)");
+        db.execSQL("CREATE TABLE" + table_users + "(Email String PRIMARY KEY AUTOINCREMENT, Username String,FirstName String,LastName String,Password integer ,IsMember boolean,memberNum integer,Phone string,id integer,expireDate date)");
     }
 
     @Override
