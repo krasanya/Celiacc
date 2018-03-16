@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final Button btLogin = (Button) findViewById(R.id.btLogin);
-        final Button btRegister = (Button) findViewById(R.id.btRegister);
 
 
         Button Menubutton = (Button) findViewById(R.id.btLogin);
@@ -31,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button Registerbutton = (Button) findViewById(R.id.btRegister);
-        Menubutton.setOnClickListener(new View.OnClickListener() {
+        Registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent NewUserIntent = new Intent (MainActivity.this,NewUserActivity.class);
+            public void onClick(View v1) {
+                Intent NewUserIntent = new Intent (MainActivity.this,NewUserForm.class);
                 startActivity(NewUserIntent);
             }
         });
