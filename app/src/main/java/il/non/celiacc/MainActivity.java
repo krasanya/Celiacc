@@ -1,6 +1,7 @@
 package il.non.celiacc;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,15 +11,18 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    //MySqliteOpenHelper myDB;
+     private MySqliteOpenHelper myHelper;
+     private SQLiteDatabase sqlDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //myDB = new MySqliteOpenHelper(this);
+        //db
+        //myHelper = new MySqliteOpenHelper(MainActivity.this, "CeliacDB",null,1);
+        //sqlDB = myHelper.getWritableDatabase();
 
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+       // final EditText etUsername = (EditText) findViewById(R.id.etUsername);
+       // final EditText etPassword = (EditText) findViewById(R.id.etPassword);
 
 
         Button Menubutton = (Button) findViewById(R.id.btLogin);
