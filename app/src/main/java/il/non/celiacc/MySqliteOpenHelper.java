@@ -23,7 +23,7 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
     }
     final SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
-
+    ///////////////
 
     @Override
     public void onCreate(SQLiteDatabase db) {
