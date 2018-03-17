@@ -14,6 +14,7 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_menu);
         Button Barcodebutton = (Button) findViewById(R.id.buttonBarcode);
         Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);

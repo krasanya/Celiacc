@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GreenLight">
+
+    <TextView
+        android:id="@+id/TitleDidntFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="26dp"
+        android:text="לא נמצא המוצר"
+        android:textColor="@android:color/background_dark"
+        android:textColorHighlight="@android:color/background_dark"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TitleDidntFind"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="51dp"
+        android:layout_marginStart="51dp"
+        android:background="@color/GreenLight"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
+    <TextView
+        android:id="@+id/textDidntFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TitleDidntFind"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:text="המוצר שביקשת אינו נמצא במאגר"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/buttonscanAnother"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:onClick="BackToScanner"
+        android:text="סרוק מוצר נוסף"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/buttonbackFromScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonscanAnother"
+        android:layout_alignBottom="@+id/buttonscanAnother"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="BackToMenu"
+        android:text="חזרה למסך הראשי"
+        android:textSize="22sp" />
+
+</RelativeLayout>

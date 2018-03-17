@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 
 import java.sql.Date;
 
@@ -19,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        Toolbar toolbar= (Toolbar)findViewById(R.id.toolbar);
+        getSupportActionBar().setTitle("מדריך המזון הרשמי לקהילת הצליאק");
+        getSupportActionBar().setLogo(android.R.drawable.ic_menu_info_details);
 
         db = new MySqliteOpenHelper(this);
 
