@@ -32,6 +32,10 @@
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".BarcodeScan"></activity>
+        <activity android:name=".Pop"
+            android:theme="@style/AppTheme.PopUp"
+            ></activity>
     </application>
+
 
 </manifest>
