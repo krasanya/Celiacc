@@ -1,6 +1,8 @@
 package il.non.celiacc;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -22,9 +24,32 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
     }*/
     @Override
     public void onCreate(SQLiteDatabase db) {
-       db.execSQL("CREATE TABLE USERS(Email text PRIMARY KEY , Username String,FirstName String,LastName String,Password integer ,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
+       db.execSQL("CREATE TABLE USERS(Email String PRIMARY KEY , Username String,FirstName String,LastName String,Password String ,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
 
     }
+
+    public boolean addUser(String Email , String Username ,String FirstName ,String LastName ,String Password ){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("Email",Email);
+        cv.put("Username",Username);
+        cv.put("Firstname",FirstName);
+        cv.put("Lastname",LastName);
+        cv.put("Password", Password);
+        db.insert("USERS",null,cv);
+        db.close();
+        return true;
+    }
+
+    public boolean selectUserByUsername(String Username){
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor c = db.rawQuery("SELECT * FROM USERS WHERE TRIM(Username) = '"+Username+"'",null);
+        if (c.getCount()==0) {return false;}
+        c.close();
+        return true;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

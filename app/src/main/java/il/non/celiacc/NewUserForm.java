@@ -13,10 +13,15 @@ import android.widget.Toast;
 
 public class NewUserForm extends AppCompatActivity {
 
+    //db
+    MySqliteOpenHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user_form);
+
+        db = new MySqliteOpenHelper(this);
 
         final Button btRegister = (Button) findViewById(R.id.btRegister);
 
@@ -39,6 +44,11 @@ public class NewUserForm extends AppCompatActivity {
                     String strPass = etPass.getText().toString();
                     String strPass2 = etPass2.getText().toString();
 
+                    // if there are empty fields - type
+                    if (strEmail.equals("") || strUsername.equals("") || strFirstname.equals("") || strLastname.equals("") || strPass.equals("")){
+                        Toast.makeText(getApplicationContext(),"יש להזין את כל השדות",Toast.LENGTH_LONG)
+                                .show();
+                    }
                     // if passwords doesnt match - type again
                     if (!strPass.equals(strPass2)){
                         Toast.makeText(getApplicationContext(),"הסיסמאות אינן זהות אנא נסה שנית",Toast.LENGTH_LONG)
@@ -46,13 +56,10 @@ public class NewUserForm extends AppCompatActivity {
                     }
                     // if passwords ok - move on
                     if (strPass.equals(strPass2)){
-                      /*  ContentValues cv = New ContentValues();
-                        cv.put("Email",strEmail);
-                        cv.put("Username",strUsername);
-                        cv.put("Firstname",strFirstname);
-                        cv.put("Lastname",strLastname);
-                        cv.put("Password",strPass);
-                        String tryy = sqlDB.insert("USERS",null,cv);*/
+
+                          if ( db.addUser(strEmail,strUsername,strFirstname,strLastname,strPass) == true) {
+                              Toast.makeText(getApplicationContext(), "hope that values saved, lets check!", Toast.LENGTH_LONG).show();
+                          }
 
                         Intent RegIntent = new Intent (NewUserForm.this,MainMenu.class);
                         startActivity(RegIntent);
