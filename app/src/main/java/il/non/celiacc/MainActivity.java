@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.Date;
+
 
 public class MainActivity extends AppCompatActivity {
 
     MySqliteOpenHelper db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +35,28 @@ public class MainActivity extends AppCompatActivity {
 
                  if (v.getId() == R.id.btLogin) {
 
-                     if (db.selectUserByUsername(strUsername) == true){
-                         Toast.makeText(getApplicationContext(),"USER EXISTS",Toast.LENGTH_LONG)
+                     // if there are empty fields - type
+                    if ( strUsername.equals("") || strPass.equals("")){
+                         Toast.makeText(getApplicationContext(),"יש להזין את כל השדות",Toast.LENGTH_LONG)
                                  .show();
                      }
+                     // if it's users exist in system and it's not users password - type again
                      else {
-                         Toast.makeText(getApplicationContext(),"NOT EXIST",Toast.LENGTH_LONG)
-                                 .show();
+                        /* if (!db.confirmUserPassword(strUsername,strPass) && (strUsername != null || strPass!= null) && db.selectUserByUsername(strUsername)){
+                         Toast.makeText(getApplicationContext(), "הסיסמא או שם המשתמש אינם נכונים, אנא הקלד שנית", Toast.LENGTH_LONG).show();
+                    */ }
+                     // find user in db - if found: great!
+                     if (db.selectUserByUsername(strUsername)){
+                         Toast.makeText(getApplicationContext(),"USER EXISTS",Toast.LENGTH_LONG).show();
+                         // navigate to main menu
+                         Intent MenuIntent = new Intent(MainActivity.this, MainMenu.class);
+                         startActivity(MenuIntent);
                      }
+                     if (!db.selectUserByUsername(strUsername) && (strUsername!=null || strPass !=null) ){ // if didnt found :(
+                         Toast.makeText(getApplicationContext(),"NOT EXIST",Toast.LENGTH_LONG).show();
+                     }
+                        //}
 
-                    Intent MenuIntent = new Intent(MainActivity.this, MainMenu.class);
-                    startActivity(MenuIntent);
                  }
 
              }
@@ -58,6 +70,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(NewUserIntent);
             }
         });
+
+        Button TESTbutton = (Button) findViewById(R.id.btTESTADD);
+        TESTbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                if (v1.getId() == R.id.btTESTADD) {
+                    //////////* T E S T - INSERT PRODUCT *////////////
+                    db.addCategory("שוקולד", null, null, null, null, null, null, null, null, null, null);
+                    db.addCategory("משקאות", null, null, null, null, null, null, null, null, null, null);
+                    db.addSubCategory("משקאות", "מיים מינרלים");
+
+                    db.addProduct("013495113513", "TEST קליק", "שוקולד", null, "יוניליבר", null, null, "N", null, 75, false);
+                    db.addProduct("729000231018", "TEST נביעות", "משקאות", "מיים מינרלים", "נביעות טבע הגליל", null, null, "Y", null, 75, false);
+
+                }
+            }
+            });
 
 
     }
