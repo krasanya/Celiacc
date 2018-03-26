@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -23,9 +24,12 @@ public class ProductSearch extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    //db
+    MySqliteOpenHelper db;
+
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String productName;
+    private String manufacturer;
 
     private OnFragmentInteractionListener mListener;
 
@@ -54,9 +58,10 @@ public class ProductSearch extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            productName = getArguments().getString(ARG_PARAM1);
+            manufacturer = getArguments().getString(ARG_PARAM2);
         }
     }
 

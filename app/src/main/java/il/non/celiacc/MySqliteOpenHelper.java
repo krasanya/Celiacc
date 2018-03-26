@@ -127,6 +127,13 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean findProducts(String productName){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM PRODUCTS WHERE TRIM(productName) = '"+productName+"'",null);
+        if (c.getCount()==0) {return false;}
+        c.close();
+        return true;
+    }
 
 
     @Override
