@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
     private static final String database_name = "databaseCeliac.db";
-    private static final int database_version = 3;
+    private static final int database_version = 11;
 
     public MySqliteOpenHelper(Context context) {
         super(context, database_name,null, database_version);
@@ -27,13 +27,12 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //onUpgrade(db,2,3);
-        db.execSQL("CREATE TABLE USERS(Email String PRIMARY KEY NOT NULL, Username String NOT NULL,FirstName String NOT NULL,LastName String NOT NULL,Password String NOT NULL,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
+        //onUpgrade(db,10,11);
+       db.execSQL("CREATE TABLE IF NOT EXISTS USERS(Email String PRIMARY KEY NOT NULL, Username String NOT NULL,FirstName String NOT NULL,LastName String NOT NULL,Password String NOT NULL,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
+      db.execSQL("CREATE TABLE IF NOT EXISTS CATEGORIES(CategoryName String PRIMARY KEY NOT NULL , Tag1 String,Tag2 String,Tag3 String,Tag4 String,Tag5 String,Tag6 String,Tag7 String,Tag8 String,Tag9 String,Tag10 String)");
+      db.execSQL("CREATE TABLE IF NOT EXISTS SUBCAT(subCategoryName String PRIMARY KEY NOT NULL, CategoryName CONSTRAINT category_pk REFERENCES CATEGORIES NOT NULL)");
+      db.execSQL("CREATE TABLE IF NOT EXISTS PRODUCTS(Barcode String PRIMARY KEY NOT NULL , ProductName String NOT NULL ,CategoryName CONSTRAINT category_pk REFERENCES CATEGORIES NOT NULL, subCategoryName CONSTRAINT subCategory_pk REFERENCES SUBCAT NOT NULL, Manufacturer String,Importer String,AdditionalInfo String ,IsGlutenFree String NOT NULL,/*IMG blob ,*/dateValid Date,weigth double NOT NULL,/*Approval blob,*/IsPassover boolean NOT NULL)");
 
-        db.execSQL("CREATE TABLE PRODUCTS(Barcode String PRIMARY KEY NOT NULL , ProductName String NOT NULL ,CategoryName String CONSTRAINT category_pk NOT NULL, subCategoryName String CONSTRAINT subCategory_pk, Manufacturer String,Importer String,AdditionalInfo String ,IsGlutenFree String NOT NULL,/*IMG blob ,*/dateValid Date,weigth double NOT NULL,/*Approval blob,*/IsPassover boolean NOT NULL)");
-
-        db.execSQL("CREATE TABLE CATEGORIES(CategoryName String PRIMARY KEY NOT NULL , Tag1 String,Tag2 String,Tag3 String,Tag4 String,Tag5 String,Tag6 String,Tag7 String,Tag8 String,Tag9 String,Tag10 String)");
-        db.execSQL("CREATE TABLE SUBCATEGORIES(CategoryName CONSTRAINT category_pk PRIMARY KEY NOT NULL,subCategoryName String NOT NULL)");
 
 
     }
@@ -78,12 +77,13 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
     }
 
     /* HELP INSERT SUBCATEGORIES TO TABLE SUBCATEGORIES */
-    public boolean addSubCategory(String CategoryName , String subCategoryName  ){
+    public boolean addSubCategory(String subCategoryName, String CategoryName  ){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("CategoryName",CategoryName);
         cv.put("subCategoryName",subCategoryName);
-        db.insert("SUBCATEGORIES",null,cv);
+        cv.put("CategoryName",CategoryName);
+
+        db.insert("SUBCAT",null,cv);
         db.close();
         return true;
     }
@@ -131,15 +131,15 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL("DROP TABLE IF EXISTS USERS");
-       // db.execSQL("DROP TABLE IF EXISTS PRODUCTS");
+        db.execSQL("DROP TABLE IF EXISTS USERS");
+        db.execSQL("DROP TABLE IF EXISTS PRODUCTS");
+        db.execSQL("DROP TABLE IF EXISTS SUBCAT");
+        db.execSQL("DROP TABLE IF EXISTS CATEGORIES");
+        db.execSQL("CREATE TABLE  USERS(Email String PRIMARY KEY NOT NULL, Username String NOT NULL,FirstName String NOT NULL,LastName String NOT NULL,Password String NOT NULL,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
+        db.execSQL("CREATE TABLE  CATEGORIES(CategoryName String PRIMARY KEY NOT NULL , Tag1 String,Tag2 String,Tag3 String,Tag4 String,Tag5 String,Tag6 String,Tag7 String,Tag8 String,Tag9 String,Tag10 String)");
+        db.execSQL("CREATE TABLE  SUBCAT(subCategoryName String PRIMARY KEY NOT NULL, CategoryName CONSTRAINT category_pk REFERENCES CATEGORIES NOT NULL)");
+         db.execSQL("CREATE TABLE  PRODUCTS(Barcode String PRIMARY KEY NOT NULL , ProductName String NOT NULL ,CategoryName CONSTRAINT category_pk REFERENCES CATEGORIES NOT NULL, subCategoryName CONSTRAINT subCategory_pk REFERENCES SUBCAT NOT NULL, Manufacturer String,Importer String,AdditionalInfo String ,IsGlutenFree String NOT NULL,/*IMG blob ,*/dateValid Date,weigth double NOT NULL,/*Approval blob,*/IsPassover boolean NOT NULL)");
 
-        //db.execSQL("CREATE TABLE USERS(Email String PRIMARY KEY NOT NULL, Username String NOT NULL,FirstName String NOT NULL,LastName String NOT NULL,Password String NOT NULL,IsMember boolean,memberNum integer,Phone String,id integer,expireDate Date)");
-
-        //db.execSQL("CREATE TABLE PRODUCTS(Barcode String PRIMARY KEY NOT NULL , ProductName String NOT NULL ,CategoryName String CONSTRAINT category_pk NOT NULL, subCategoryName String CONSTRAINT subCategory_pk, Manufacturer String,Importer String,AdditionalInfo String ,IsGlutenFree String NOT NULL,/*IMG blob ,*/dateValid Date,weigth double NOT NULL,/*Approval blob,*/IsPassover boolean NOT NULL)");
-
-       // db.execSQL("CREATE TABLE CATEGORIES(CategoryName String PRIMARY KEY NOT NULL , Tag1 String,Tag2 String,Tag3 String,Tag4 String,Tag5 String,Tag6 String,Tag7 String,Tag8 String,Tag9 String,Tag10 String)");
-       // db.execSQL("CREATE TABLE SUBCATEGORIES(CategoryName CONSTRAINT category_pk PRIMARY KEY NOT NULL,subCategoryName String NOT NULL)");
 
         //onCreate(db);
     }
