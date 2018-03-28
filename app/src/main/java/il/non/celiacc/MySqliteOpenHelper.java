@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -127,13 +129,43 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean findProducts(String productName){
+    public String findProductBarcode(String BarcodeScan) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM PRODUCTS WHERE TRIM(productName) = '"+productName+"'",null);
-        if (c.getCount()==0) {return false;}
-        c.close();
-        return true;
+        Cursor c = db.rawQuery("SELECT * FROM PRODUCTS WHERE TRIM(Barcode) = '"+BarcodeScan+"'",null);
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            {
+                if (c.getString(c.getColumnIndex("IsGlutenFree")).equals("Y")) {
+                    return "Y";
+                }
+                if (c.getString(c.getColumnIndex("IsGlutenFree")).equals("N")) {
+                    return "N";
+                }
+                if (c.getString(c.getColumnIndex("IsGlutenFree")).equals("M")) {
+                    return "M";
+                } else {
+                    c.close();
+                    return "Not Found";
+                }
+            }
+
+
+        }
+        else return "Didn't Find";
     }
+
+    public Cursor findProductBarcodeCursor(String BarcodeScan) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM PRODUCTS WHERE Barcode = '"+BarcodeScan+"'",null);
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            return c;
+
+
+        }
+        else return null;
+    }
+
 
 
     @Override
@@ -150,6 +182,8 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
         //onCreate(db);
     }
+
+
 }
 
 
