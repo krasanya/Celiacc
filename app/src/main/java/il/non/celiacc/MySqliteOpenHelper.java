@@ -24,6 +24,14 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
 
     }
+
+    //for the catagory grid view
+    public Cursor getData(String command){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(command, null);
+    }
+
+
     final SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
     ///////////////
 

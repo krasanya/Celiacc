@@ -36,6 +36,7 @@
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.PopUp" />
+        <activity android:name=".CatagoryGrid"></activity>
     </application>
 
 </manifest>

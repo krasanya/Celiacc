@@ -20,6 +20,7 @@ public class MainMenu extends AppCompatActivity {
         Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);
         Button Exitbutton = (Button) findViewById(R.id.buttonExitMain);
         Button Searchbutton = (Button) findViewById(R.id.buttonSearch);
+        Button ButtonTry = (Button) findViewById(R.id.ButtonTry);
         Barcodebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +46,14 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent SearchIntent = new Intent (MainMenu.this,Search.class);
+                startActivity(SearchIntent);
+            }
+        });
+
+        ButtonTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent SearchIntent = new Intent (MainMenu.this,CatagoryGrid.class);
                 startActivity(SearchIntent);
             }
         });
