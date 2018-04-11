@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="il.non.celiacc">
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -31,11 +32,13 @@
             android:name=".Search"
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BarcodeScan"></activity>
-        <activity android:name=".Pop"
-            android:theme="@style/AppTheme.PopUp"
-            ></activity>
-    </application>
+        <activity android:name=".BarcodeScan" />
+        <activity
+            android:name=".Pop"
+            android:theme="@style/AppTheme.PopUp" />
+        <activity android:name=".ProductSearchResult" />
+        <activity android:name=".tabf"></activity>
 
+    </application>
 
 </manifest>
