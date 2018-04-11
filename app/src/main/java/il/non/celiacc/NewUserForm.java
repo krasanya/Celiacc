@@ -44,6 +44,7 @@ public class NewUserForm extends AppCompatActivity {
                     String strPass = etPass.getText().toString();
                     String strPass2 = etPass2.getText().toString();
 
+
                     // if there are empty fields - type
                     if (strEmail.equals("") || strUsername.equals("") || strFirstname.equals("") || strLastname.equals("") || strPass.equals("")) {
                         Toast.makeText(getApplicationContext(), "יש להזין את כל השדות", Toast.LENGTH_LONG).show();
@@ -67,6 +68,7 @@ public class NewUserForm extends AppCompatActivity {
                     // navigate to main menu
                     Intent RegIntent = new Intent(NewUserForm.this, MainMenu.class);
                     startActivity(RegIntent);
+
                 }
 
 

@@ -1,12 +1,22 @@
 package il.non.celiacc;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.Toast;
 
 
 /**
@@ -53,12 +63,39 @@ public class CatagorySearch extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+       // super.onCreate(savedInstanceState);
+        //if (getArguments() != null) {
+        //    mParam1 = getArguments().getString(ARG_PARAM1);
+        //    mParam2 = getArguments().getString(ARG_PARAM2);
+       // }
+
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        getActivity().setContentView(R.layout.fragment_catagory_search);
+
+        GridView gridview = (GridView) getView().findViewById(R.id.gridview);
+        //gridview.setAdapter(new ImageAdapter(getContext()));
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(getContext(), "" + position,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    //    populateButtons();
     }
+
+    //private void populateButtons() {
+    ///    TableLayout table = (TableLayout) getView().findViewById(R.id.catTable);
+    //    for(int row = 0; row<5; row++){
+    //        TableRow tablerow = new TableRow(getContext());
+    //        table.addView(tablerow);
+    //        for (int col = 0; col<5; col++){
+     //           Button button = new Button ( getContext());
+    //            tablerow.addView(button);
+    //        }
+    //    }
+   // }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
