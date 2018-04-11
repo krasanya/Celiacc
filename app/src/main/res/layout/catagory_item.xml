@@ -10,9 +10,11 @@
         android:id="@+id/catName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/catIMG"
-        android:layout_alignRight="@id/catIMG"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/catIMG"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:text="Catagory Name"
         tools:layout_editor_absoluteX="78dp"
         tools:layout_editor_absoluteY="87dp" />

@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar= (Toolbar)findViewById(R.id.toolbar);
-        getSupportActionBar().setTitle("מדריך המזון הרשמי לקהילת הצליאק");
-        getSupportActionBar().setLogo(android.R.drawable.ic_menu_info_details);
+        //Toolbar toolbar= (Toolbar)findViewById(R.id.toolbar);
+        //getSupportActionBar().setTitle("מדריך המזון הרשמי לקהילת הצליאק");
+        //getSupportActionBar().setLogo(android.R.drawable.ic_menu_info_details);
 
         db = new MySqliteOpenHelper(this);
 

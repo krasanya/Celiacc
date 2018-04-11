@@ -108,12 +108,15 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
         //setting the title of the alert dialog
         if (BarcodeC.equals("Y")) {
             Title = "המוצר אינו מכיל גלוטן";
+
+            //הגדרת העיצוב של הפופאפ, צריך לבוא אחרי הSHOW של הדיאלוג
+            //showInfo.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.buttons));
         }
         else if (BarcodeC.equals("N")) {
             Title = "המוצר מכיל גלוטן";
         }
         else if (BarcodeC.equals("M")) {
-                Title="המוצר עלול להכיל גלוטן";
+            Title="המוצר עלול להכיל גלוטן";
         }
 
 
@@ -121,7 +124,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
             Results.setTitle(Title);
             Results.setMessage(FirstLingMessage + "\n" + SecondLingMessage + "\n" + ThirdLingMessage);
-            Results.setCancelable(true);
+            Results.setCancelable(false);
 
             //defining the positive button that will let the user scan again
             Results.setPositiveButton(
@@ -148,6 +151,8 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
             AlertDialog showInfo = Results.create();
             showInfo.show();
+
+
 
             setContentView(R.layout.activity_barcode_scan);
             scannerView.stopCamera();
