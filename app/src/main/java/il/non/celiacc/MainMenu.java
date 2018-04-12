@@ -2,10 +2,7 @@ package il.non.celiacc;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,7 +17,7 @@ public class MainMenu extends AppCompatActivity {
         Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);
         Button Exitbutton = (Button) findViewById(R.id.buttonExitMain);
         Button Searchbutton = (Button) findViewById(R.id.buttonSearch);
-        Button ButtonTry = (Button) findViewById(R.id.ButtonTry);
+        Button ButtonTry = (Button) findViewById(R.id.buttonSearchCat);
         Barcodebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

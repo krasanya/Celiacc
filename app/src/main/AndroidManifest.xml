@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:layoutDirection="rtl"
         android:textDirection="rtl"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
             android:label="אפליקציית עמותת הצליאק בישראל">
             <intent-filter>

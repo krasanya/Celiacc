@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_texts"
-        android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:ems="10"
+        android:fontFamily="@font/varela_round"
         android:hint="שם משתמש"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textColor="#273746"
         android:textColorHighlight="#273746"
+        android:textSize="22sp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +43,11 @@
         android:textColorHighlight="#273746"
         android:textSize="22sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/btLogin"
+        app:layout_constraintBottom_toTopOf="@+id/btRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.343" />
 
     <Button
         android:id="@+id/btLogin"
@@ -70,17 +70,20 @@
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="משתמש חדש"
+        android:textColor="#273746"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btLogin" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="254dp"
-        android:layout_height="64dp"
+        android:layout_width="259dp"
+        android:layout_height="65dp"
         android:layout_marginTop="28dp"
+        android:background="#00000000"
         android:fontFamily="@font/varela_round"
         android:layoutDirection="rtl"
         android:text=" ברוכים הבאים למדריך המזון של עמותת הצליאק בישראל! חברי עמותה יכולים להתחבר עם פרטי החבר"
@@ -89,22 +92,23 @@
         android:textColorHighlight="@android:color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--<TextView-->
-        <!--android:id="@+id/textView5"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:fontFamily="@font/varela_round"-->
-        <!--android:text="חברי עמותה יכולים להתחבר עם פרטי החבר"-->
-        <!--android:textDirection="rtl"-->
-        <!--android:textSize="15sp"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/etPassword"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.5"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--android:id="@+id/textView5"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fontFamily="@font/varela_round"-->
+    <!--android:text="חברי עמותה יכולים להתחבר עם פרטי החבר"-->
+    <!--android:textDirection="rtl"-->
+    <!--android:textSize="15sp"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/etPassword"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.5"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 </android.support.constraint.ConstraintLayout>
