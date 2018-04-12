@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/tvProdName"
-        android:layout_width="133dp"
-        android:layout_height="32dp"
+        android:layout_width="216dp"
+        android:layout_height="56dp"
         android:layout_marginTop="16dp"
         android:text="שם המוצר"
         app:layout_constraintEnd_toEndOf="parent"

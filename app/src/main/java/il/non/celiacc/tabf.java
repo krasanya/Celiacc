@@ -31,8 +31,11 @@ public class tabf extends AppCompatActivity {
                 if (v.getId() == R.id.btFine){
                     products.clear();
                     final EditText etyalla = (EditText) findViewById(R.id.etPrody);
+                    final EditText etmanu = (EditText) findViewById(R.id.etManu);
                     String go = etyalla.getText().toString();
+                    String go2 = etmanu.getText().toString();
                     products = db.getProducts(go);
+                    //products = db.getProducts(go,go2);
                     if (products.isEmpty()){
                         Toast.makeText(getApplicationContext(), "המוצר אינו נמצא במאגר", Toast.LENGTH_LONG).show();
                     }

@@ -146,6 +146,54 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
         return products;
     }
 
+     /*  public ArrayList<HashMap<String,String>> getProducts(String prodName, String manu) {
+           Cursor c = null;
+           if (!prodName.equals("")) {
+               if (!manu.equals("")) {
+                   c = getReadableDatabase().rawQuery("SELECT * FROM PRODUCTS WHERE (TRIM(ProductName) LIKE '%" + prodName + "%') AND (TRIM(Manufacturer) LIKE '%" + manu + "%' OR TRIM(Importer) LIKE '%" + manu + "%' ", null);
+               }
+               else {
+                   c = getReadableDatabase().rawQuery("SELECT * FROM PRODUCTS WHERE TRIM(ProductName) LIKE '%" + prodName + "%'", null);
+               }
+           }
+           else {
+               if (!manu.equals("")) {
+                   c = getReadableDatabase().rawQuery("SELECT * FROM PRODUCTS WHERE (TRIM(Manufacturer) LIKE '%" + manu + "%' OR TRIM(Importer) LIKE '%" + manu + "%' ", null);
+               }
+           }
+    if (c != null) {
+        //Log.d("SQLITE_OPEN_HELPER", "i=0");
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            for (int i = 0; i < c.getCount(); i++) {
+                HashMap<String, String> hm = new HashMap<String, String>();
+                hm.put("Product", c.getString(1));
+                hm.put("IsGlutenFree", c.getString(7));
+                products.add(hm);
+                c.moveToNext();
+
+            }
+        }
+        c.close();
+    }
+    else {
+        Log.d("SQLITE_OPEN_HELPER", "i=0");
+              products.clear();
+    }
+         return products;
+    }*/
+
+      public Cursor findProductBarcodeCursor(String BarcodeScan) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM PRODUCTS WHERE Barcode = '"+BarcodeScan+"'",null);
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            return c;
+
+
+        }
+        else return null;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

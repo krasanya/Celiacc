@@ -32,14 +32,14 @@ public class CatagoryGrid extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         // get all data from sqlite
-        Cursor cursor = sqlHelper.getData("SELECT CategoryName,IMG FROM CATEGORIES");
-        list.clear();
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(0);
-            byte[] image = cursor.getBlob(1);
+       // Cursor cursor = sqlHelper.getData("SELECT CategoryName,IMG FROM CATEGORIES");
+       // list.clear();
+       // while (cursor.moveToNext()) {
+       //     String name = cursor.getString(0);
+       //     byte[] image = cursor.getBlob(1);
 
-            list.add(new Category(name, image));
-        }
+       //     list.add(new Category(name, image));
+       // }
 
     }
 

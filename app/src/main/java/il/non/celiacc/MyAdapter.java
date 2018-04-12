@@ -1,6 +1,7 @@
 package il.non.celiacc;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
     public View getView(int position ,View convertView, ViewGroup parent) {
 
-        HashMap<String, String> map = myList.get(position);
+        final HashMap<String, String> map = myList.get(position);
         ItemViewHolder viewHolder;
 
         if (convertView == null) {
@@ -57,10 +58,26 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
         viewHolder.product_name.setText(map.get("Product"));
         viewHolder.Is_gluten_free.setText(map.get("IsGlutenFree"));
+
         viewHolder.product_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"ON CLICK IS WORKING !!!!",Toast.LENGTH_LONG).show();
+                String FirstLingMessage = "";
+                String SecondLingMessage ="";
+                String ThirdLingMessage = "";
+                Toast.makeText(getContext(), "ON CLICK IS WORKING !!!!", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder Results = new AlertDialog.Builder(getContext());
+                if (map.get("IsGlutenFree").toString().equals("Y")) {
+                   // FirstLingMessage = "שם המוצר: " + c.getString(c.getColumnIndex("ProductName"));
+                   // SecondLingMessage = "יצרן: " + c.getString(c.getColumnIndex("Manufacturer"));
+                   // ThirdLingMessage = "תאריך אישור: " + c.getString(c.getColumnIndex("dateValid"));
+                    if  (map.get("IsGlutenFree").toString().equals("N")) {
+
+
+                }
+
+            }
+
             }
         });
         return convertView;

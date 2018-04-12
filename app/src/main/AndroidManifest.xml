@@ -33,7 +33,12 @@
             android:label="חיפוש ידני" />
         <activity android:name=".BarcodeScan"
             android:label="סריקת ברקוד" />
-
+        <activity
+            android:name=".tabf"
+            android:label="חיפוש מוצר" />
+        <activity
+            android:name=".ProductSearchResult"
+            android:label="תוצאות החיפוש" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

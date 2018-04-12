@@ -77,23 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button TESTbutton = (Button) findViewById(R.id.btTESTADD);
-        TESTbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v1) {
-                if (v1.getId() == R.id.btTESTADD) {
-                    //////////* T E S T - INSERT PRODUCT *////////////
-                    db.addCategory("שוקולד", null, null, null, null, null, null, null, null, null, null);
-                    db.addCategory("משקאות", null, null, null, null, null, null, null, null, null, null);
-                    db.addSubCategory("משקאות", "מיים מינרלים");
 
-                    db.addProduct("013495113513", "TEST קליק", "שוקולד", null, "יוניליבר", null, null, "N", null, 75, false);
-                    db.addProduct("729000231018", "TEST נביעות", "משקאות", "מיים מינרלים", "נביעות טבע הגליל", null, null, "Y", null, 75, false);
-
-                }
             }
-            });
 
-
-    }
 }
