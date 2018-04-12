@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:layoutDirection="rtl"
         android:textDirection="rtl"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:label="כניסה לחשבון משתמש">
+            android:label="אפליקציית עמותת הצליאק בישראל">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
