@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +29,7 @@ public class ProductSearchResult extends ListActivity {
         MyAdapter adapt = new MyAdapter(this, tabf.products);
         setListAdapter(adapt);
 
-    }
+            }
 
 }
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.support.v4.app.ActivityCompat;
@@ -34,7 +36,8 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_barcode_scan);
-
+       // Intent intent = getIntent();
+       // final String textUsername = intent.getStringExtra(Intent.EXTRA_TEXT);
         db = new MySqliteOpenHelper(this);
 
         //defining the scanner and starting the camera
@@ -109,16 +112,13 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
         if (BarcodeC.equals("Y")) {
             Title = "המוצר אינו מכיל גלוטן";
 
-            //הגדרת העיצוב של הפופאפ, צריך לבוא אחרי הSHOW של הדיאלוג
-            //showInfo.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.buttons));
-        }
+            }
         else if (BarcodeC.equals("N")) {
             Title = "המוצר מכיל גלוטן";
         }
         else if (BarcodeC.equals("M")) {
             Title="המוצר עלול להכיל גלוטן";
         }
-
 
         //poping the specific alert according to the barcode
 
@@ -134,6 +134,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                             Intent RegIntent = new Intent(BarcodeScan.this, BarcodeScan.class);
+                          //  RegIntent.putExtra(Intent.EXTRA_TEXT, textUsername); //PASS USER
                             startActivity(RegIntent);
                         }
                     });
@@ -144,12 +145,36 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             Intent RegIntent = new Intent(BarcodeScan.this, MainMenu.class);
+
                             startActivity(RegIntent);
                             dialog.cancel();;
                         }
                     });
 
-            AlertDialog showInfo = Results.create();
+        // change color of the buttons in alert dialog
+        final AlertDialog showInfo = Results.create();
+
+        showInfo.setOnShowListener( new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+            }
+        });
+
+        //setting the colour of the alert dialog
+        if (BarcodeC.equals("Y")) {
+            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            showInfo.getWindow().setBackgroundDrawableResource(R.color._GreenLight);
+        }
+        else if (BarcodeC.equals("N")) {
+            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            showInfo.getWindow().setBackgroundDrawableResource(R.color._red);
+        }
+        else if (BarcodeC.equals("M")) {
+            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
+        }
             showInfo.show();
 
 

@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class Search extends AppCompatActivity {
+public class SearchPage extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,17 +29,17 @@ public class Search extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    public SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    public ViewPager mViewPager;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_page);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,22 +56,13 @@ public class Search extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-         //       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-         //               .setAction("Action", null).show();
-         //   }
-        //});
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.menu_search_page, menu);
         return true;
     }
 
@@ -118,20 +109,10 @@ public class Search extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            if(getArguments().getInt(ARG_SECTION_NUMBER)==1){
-                View rootView = inflater.inflate(R.layout.fragment_product_search, container, false);
-                return rootView;
-            }
-            if(getArguments().getInt(ARG_SECTION_NUMBER)==2){
-                View rootView = inflater.inflate(R.layout.fragment_catagory_search, container, false);
-                return rootView;
-            }
-            else {
-                View rootView = inflater.inflate(R.layout.fragment_product_search, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-                return rootView;
-            }
+            View rootView = inflater.inflate(R.layout.tabf, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return rootView;
         }
     }
 
@@ -149,7 +130,13 @@ public class Search extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            Fragment fragment = null;
+            switch (position){
+                case 0: fragment = new Fragment_product();
+                case 1: fragment = new Fragment_category();
+            }
+
+           return fragment;
         }
 
         @Override

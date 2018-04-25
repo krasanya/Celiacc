@@ -13,6 +13,12 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_menu);
+
+        // get the text from MainActivity
+        Intent intent = getIntent();
+        final String textUsername = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+
         Button Barcodebutton = (Button) findViewById(R.id.buttonBarcode);
         Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);
         Button Exitbutton = (Button) findViewById(R.id.buttonExitMain);
@@ -22,6 +28,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent BarcodeIntent = new Intent (MainMenu.this,BarcodeScan.class);
+                //BarcodeIntent.putExtra(Intent.EXTRA_TEXT, textUsername); //PASS USER
                 startActivity(BarcodeIntent);
             }
         });
@@ -29,6 +36,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent UpdateIntent = new Intent (MainMenu.this,UpdateUser.class);
+                UpdateIntent.putExtra(Intent.EXTRA_TEXT, textUsername); //PASS USER
                 startActivity(UpdateIntent);
             }
         });
@@ -50,7 +58,7 @@ public class MainMenu extends AppCompatActivity {
         ButtonTry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent SearchIntent = new Intent (MainMenu.this,CatagoryGrid.class);
+                Intent SearchIntent = new Intent (MainMenu.this,Cat_Grid.class);
                 startActivity(SearchIntent);
             }
         });

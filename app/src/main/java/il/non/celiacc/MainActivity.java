@@ -1,7 +1,6 @@
 package il.non.celiacc;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
 /////////////////
-
-import java.sql.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar= (Toolbar)findViewById(R.id.toolbar);
+       // Toolbar toolbar= (Toolbar)findViewById(R.id.);
         getSupportActionBar().setTitle("מדריך המזון הרשמי לקהילת הצליאק");
         getSupportActionBar().setLogo(android.R.drawable.ic_menu_info_details);
 
@@ -33,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Menubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    final EditText etUsername = (EditText) findViewById(R.id.etUsername);
+                    final EditText etUsername = (EditText) findViewById(R.id.etNewUsername);
                     final EditText etPassword = (EditText) findViewById(R.id.etPassword);
 
                     String strUsername = etUsername.getText().toString();
@@ -52,13 +49,14 @@ public class MainActivity extends AppCompatActivity {
                          Toast.makeText(getApplicationContext(), "הסיסמא או שם המשתמש אינם נכונים, אנא הקלד שנית", Toast.LENGTH_LONG).show();
                     */ }
                      // find user in db - if found: great!
-                     if (db.selectUserByUsername(strUsername)){
+                     if (db.IsUsername(strUsername)){
                          Toast.makeText(getApplicationContext(),"USER EXISTS",Toast.LENGTH_LONG).show();
                          // navigate to main menu
                          Intent MenuIntent = new Intent(MainActivity.this, MainMenu.class);
+                         MenuIntent.putExtra(Intent.EXTRA_TEXT, strUsername); //PASS USER
                          startActivity(MenuIntent);
                      }
-                     if (!db.selectUserByUsername(strUsername) && (strUsername!=null || strPass !=null) ){ // if didnt found :(
+                     if (!db.IsUsername(strUsername) && (strUsername!=null || strPass !=null) ){ // if didnt found :(
                          Toast.makeText(getApplicationContext(),"NOT EXIST",Toast.LENGTH_LONG).show();
                      }
                         //}
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
              }
         });
 
-        Button Registerbutton = (Button) findViewById(R.id.btRegister);
+        Button Registerbutton = (Button) findViewById(R.id.btUpdateUser);
         Registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {

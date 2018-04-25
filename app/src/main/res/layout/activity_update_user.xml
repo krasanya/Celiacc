@@ -8,7 +8,7 @@
     tools:context="il.non.celiacc.UpdateUser">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etNewUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:hint="שם משתמש"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etFirstname"
+        app:layout_constraintBottom_toTopOf="@+id/etNewFirstname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,14 +35,14 @@
         android:textAlignment="center"
         android:hint="אימייל"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
+        app:layout_constraintBottom_toTopOf="@+id/etNewUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etFirstname"
+        android:id="@+id/etNewFirstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -52,14 +52,14 @@
         android:textAlignment="center"
         android:hint="שם פרטי"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etLastname"
+        app:layout_constraintBottom_toTopOf="@+id/etNewLastname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewUsername" />
 
     <EditText
-        android:id="@+id/etLastname"
+        android:id="@+id/etNewLastname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -69,63 +69,79 @@
         android:textAlignment="center"
         android:hint="שם משפחה"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etPass"
+        app:layout_constraintBottom_toTopOf="@+id/etNewPass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etFirstname" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewFirstname" />
 
     <EditText
-        android:id="@+id/etPass"
+        android:id="@+id/etNewPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
-        android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
+        android:ems="10"
         android:fadeScrollbars="false"
-        android:hint="סיסמא חדשה"
+        android:fontFamily="@font/varela_round"
+        android:hint="סיסמא "
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etPassAgain"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etNewPassAgain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLastname" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewLastname" />
 
     <Button
-        android:id="@+id/btRegister"
+        android:id="@+id/btUpdateUser"
         android:layout_width="207dp"
         android:layout_height="51dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="עדכן"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
+        app:layout_constraintVertical_bias="0.784" />
+
+    <Button
+        android:id="@+id/btbackToMenu"
+        android:layout_width="92dp"
+        android:layout_height="51dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/varela_round"
+        android:text="ביטול"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
+        app:layout_constraintVertical_bias="0.784" />
 
     <EditText
-        android:id="@+id/etPassAgain"
+        android:id="@+id/etNewPassAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
+        android:ems="10"
         android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
-        android:hint="אימות סיסמא חדשה"
+        android:hint="אימות סיסמא "
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etPhone"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etNewPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass" />
 
     <EditText
-        android:id="@+id/etPhone"
+        android:id="@+id/etNewPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -135,10 +151,10 @@
         android:textAlignment="center"
         android:hint="טלפון"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintBottom_toTopOf="@+id/btUpdateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassAgain" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewPassAgain" />
 
 </android.support.constraint.ConstraintLayout>
