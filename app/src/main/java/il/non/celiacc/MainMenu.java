@@ -23,7 +23,6 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-
         firebaseAuth=FirebaseAuth.getInstance();
 
         //going back to the log in page if there is no user loged in

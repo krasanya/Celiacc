@@ -26,7 +26,6 @@ import il.non.celiacc.R;
 
 ///////////
 public class NewUserForm extends AppCompatActivity {
-
     private EditText etEmail ;
     private EditText etUsername;
     private EditText etFirstname ;

@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class User {
 
-
     public String Email;
     public String Username;
     public String Firstname;

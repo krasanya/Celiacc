@@ -28,7 +28,7 @@ public class UpdateUser extends AppCompatActivity {
         Intent intent = getIntent();
         final String textUsername = intent.getStringExtra(Intent.EXTRA_TEXT);
 
-        //setHint();
+        //setHint()
         final String EmailOld = db.getEmailByUsername(textUsername);
         String UsernameOld = db.getUsernameFromUsername(textUsername);
         String FnameOld = db.getFirstNameFromUsername(textUsername);
