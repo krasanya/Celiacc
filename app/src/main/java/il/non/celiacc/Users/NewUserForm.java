@@ -59,7 +59,6 @@ public class NewUserForm extends AppCompatActivity {
         isMember=  findViewById(R.id.cbIsmember);
 
 
-
         //when the user presses the register button it will call the register method
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,7 +27,6 @@ public class subcat_Grid extends ListActivity {
 
         // use the text in a TextView
         ArrayList<HashMap<String, String>> temp = db.getSubCategories(textSubCategory);
-
         if (!temp.isEmpty()) {
             subCatAdapter adapt = new subCatAdapter(this, temp , textSubCategory);
             setListAdapter(adapt);

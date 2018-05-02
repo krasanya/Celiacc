@@ -20,7 +20,6 @@ public class ListSubCatResult extends ListActivity {
 
         // use the text
         ArrayList<HashMap<String, String>> subProducts = db.getSubProductList(Subtext);
-
         subCatListAdapter adapt = new subCatListAdapter(this,subProducts,Subtext);
         setListAdapter(adapt);
     }

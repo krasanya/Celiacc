@@ -89,7 +89,6 @@ public class CategoryAdapter extends ArrayAdapter<HashMap<String, String>> {
             }
         });
         return convertView;
-
     }
 
     public class ItemViewHolder {

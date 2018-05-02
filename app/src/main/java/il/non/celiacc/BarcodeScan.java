@@ -177,8 +177,6 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
         }
             showInfo.show();
 
-
-
             setContentView(R.layout.activity_barcode_scan);
             scannerView.stopCamera();
     }

@@ -115,7 +115,6 @@ public class subCatListAdapter  extends ArrayAdapter<HashMap<String, String>> {
                 }
 
                 //poping the specific alert according to the barcode
-
                 Results.setTitle(Title);
                 Results.setMessage(FirstLingMessage + "\n" + SecondLingMessage + "\n" + ThirdLingMessage);
                 Results.setCancelable(false);
@@ -141,9 +140,6 @@ public class subCatListAdapter  extends ArrayAdapter<HashMap<String, String>> {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                             //   Intent RegIntent = new Intent(getContext(), ListSubCatResult.class); //WORKS
-                             //   activity.startActivity(RegIntent); //WORKS
-                              //  dialog.cancel(); //WORKS
 
                                 // put the String to pass back into an Intent and close this activity
                                 Intent intent = new Intent(getContext(), ListSubCatResult.class);

@@ -19,7 +19,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class Cat_Grid extends ListActivity {
     MySqliteOpenHelper db = new MySqliteOpenHelper(this);
 

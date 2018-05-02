@@ -162,17 +162,14 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
                 //setting the colour of the alert dialog
                 if (BarcodeC.equals("Y")) {
-                    //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(205,92,92)));
                     showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                     showInfo.getWindow().setBackgroundDrawableResource(R.color._GreenLight);
                 }
                 else if (BarcodeC.equals("N")) {
-                   //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(152,251,152)));
-                    showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                   showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 showInfo.getWindow().setBackgroundDrawableResource(R.color._red);
                 }
                 else if (BarcodeC.equals("M")) {
-                   //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(255,255,153)));
                     showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
                 }

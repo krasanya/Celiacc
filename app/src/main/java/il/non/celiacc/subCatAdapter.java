@@ -97,6 +97,5 @@ public class subCatAdapter extends ArrayAdapter<HashMap<String, String>> {
         TextView sub_cat_name;
         TextView sub_cat_image;
         Button exit;
-
     }
 }

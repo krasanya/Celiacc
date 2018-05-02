@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
         progressDialog.setMessage("נא להמתין");
         progressDialog.show();
 

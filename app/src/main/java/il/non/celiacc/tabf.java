@@ -60,11 +60,9 @@ public class tabf extends AppCompatActivity {
 //                            Log.d("PRODUCTS",products.get(i).get("Product"));
 //                            Log.d("PRODUCTS",products.get(i).get("Barcode"));
                           //  }
-
                         Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
                         //Go to result list
                         onSelectSearchClick();
-
                     }
                 }}  });
                 // On EXIT

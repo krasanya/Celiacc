@@ -1,6 +1,5 @@
 package il.non.celiacc.Users;
 
-
 import java.util.Date;
 
 public class User {

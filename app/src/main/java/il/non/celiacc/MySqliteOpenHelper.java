@@ -279,22 +279,6 @@ public class MySqliteOpenHelper extends SQLiteOpenHelper {
         return AllSubCategories;
     }
 
-//    public HashMap<String,String> getAllCategories() {
-//        Cursor c = getReadableDatabase().rawQuery("SELECT * FROM CATEGORIES ORDER BY CategoryName DESC ", null);
-//        //byte[] bytes = c.getBlob(11);
-//        if (c.getCount() > 0) {
-//            c.moveToFirst();
-//            for (int i = 0; i < c.getCount(); i++) {
-//                HashMap<String, String> hm = new HashMap<String, String>();
-//                AllCategories.put("CategoryName", c.getString(0));
-//                AllCategories.put("Tag1", c.getString(1));
-//                //AllCategories.add(hm);
-//                c.moveToNext();
-//            }
-//            c.close();
-//        }
-//        return AllCategories;
-//    }
     /* GET ALL PRODUCTS FROM SPECIFIC SUBCATEGORY */
      public ArrayList<HashMap<String,String>> getSubProductList(String subCat) {
         Cursor c = null;

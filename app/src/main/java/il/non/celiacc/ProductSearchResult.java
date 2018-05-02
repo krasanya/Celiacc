@@ -30,6 +30,5 @@ public class ProductSearchResult extends ListActivity {
         setListAdapter(adapt);
 
             }
-
 }
 
