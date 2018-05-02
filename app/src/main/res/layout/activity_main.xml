@@ -8,7 +8,7 @@
     tools:context="il.non.celiacc.MainActivity">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etNewUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_texts"
@@ -43,7 +43,7 @@
         android:textColorHighlight="#273746"
         android:textSize="22sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintBottom_toTopOf="@+id/btUpdateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -58,13 +58,13 @@
         android:text="כניסה"
         android:textColor="#273746"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintBottom_toTopOf="@+id/btUpdateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <Button
-        android:id="@+id/btRegister"
+        android:id="@+id/btUpdateUser"
         android:layout_width="140dp"
         android:layout_height="65dp"
         android:background="@drawable/buttons"

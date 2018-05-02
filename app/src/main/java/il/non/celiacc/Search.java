@@ -56,15 +56,6 @@ public class Search extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-         //       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-         //               .setAction("Action", null).show();
-         //   }
-        //});
-
     }
 
 
@@ -119,19 +110,28 @@ public class Search extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             if(getArguments().getInt(ARG_SECTION_NUMBER)==1){
-                View rootView = inflater.inflate(R.layout.fragment_product_search, container, false);
+                View rootView = inflater.inflate(R.layout.tabf, container, false);
+
                 return rootView;
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER)==2){
-                View rootView = inflater.inflate(R.layout.fragment_catagory_search, container, false);
+                View rootView = inflater.inflate(R.layout.cat__grid, container, false);
                 return rootView;
             }
             else {
-                View rootView = inflater.inflate(R.layout.fragment_product_search, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                View rootView = inflater.inflate(R.layout.tabf, container, false);
+                 TextView textView = (TextView) rootView.findViewById(R.id.section_label);
                 textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
                 return rootView;
             }
+        }
+
+        @Override
+        public void onViewCreated(View view, Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+
+            //here your code
+            //TextView text = view.findViewById(R.id.text);
         }
     }
 

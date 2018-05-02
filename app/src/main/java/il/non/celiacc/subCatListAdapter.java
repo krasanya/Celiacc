@@ -2,34 +2,31 @@ package il.non.celiacc;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
-
+public class subCatListAdapter  extends ArrayAdapter<HashMap<String, String>> {
     public ArrayList<HashMap<String, String>> myList;
     Activity activity;
     MySqliteOpenHelper db = new MySqliteOpenHelper(getContext());
-
-    public MyAdapter(Activity activity, ArrayList<HashMap<String, String>> myList){
-        super(activity, R.layout.prod_search_result, myList);
+    String Subtext = "";
+    public subCatListAdapter(Activity activity, ArrayList<HashMap<String, String>> myList,String Subtext){
+        super(activity, R.layout.list_sub_cat_result, myList);
         this.activity = activity;
         this.myList = myList;
+        this.Subtext = Subtext;
     }
 
     @Override
@@ -47,21 +44,21 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
         return 0;
     }
 
-    public View getView(int position ,View convertView, ViewGroup parent) {
+    public View getView(int position , View convertView, ViewGroup parent) {
 
         final HashMap<String, String> map = myList.get(position);
-        ItemViewHolder viewHolder;
+        subCatListAdapter.ItemViewHolder viewHolder;
 
         if (convertView == null) {
-            viewHolder = new ItemViewHolder();
-            convertView = activity.getLayoutInflater().inflate(R.layout.prod_search_result, null, true);
+            viewHolder = new subCatListAdapter.ItemViewHolder();
+            convertView = activity.getLayoutInflater().inflate(R.layout.list_sub_cat_result, null, true);
             convertView.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_RIGHT);
             viewHolder.product_name = (TextView) convertView.findViewById(R.id.tvProdName);
             viewHolder._Barcode = (TextView) convertView.findViewById(R.id.tvIsGlutenFree);
 
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ItemViewHolder) convertView.getTag();
+            viewHolder = (subCatListAdapter.ItemViewHolder) convertView.getTag();
         }
 
         viewHolder.product_name.setText(map.get("Product"));
@@ -90,7 +87,6 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
                 //building an alert dialog
                 AlertDialog.Builder Results = new AlertDialog.Builder(getContext());
-
                 //setting the content of the alert dialog
                 if (BarcodeC.equals("Not Found")){
                     Title=map.get("Barcode").toString();
@@ -110,15 +106,12 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
                 //setting the title of the alert dialog
                 if (BarcodeC.equals("Y")) {
                     Title = "המוצר אינו מכיל גלוטן";
-                    //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GREEN));
                 }
                 else if (BarcodeC.equals("N")) {
                     Title = "המוצר מכיל גלוטן";
-                    //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.RED));
                 }
                 else if (BarcodeC.equals("M")) {
                     Title="המוצר עלול להכיל גלוטן";
-                   // showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.YELLOW));
                 }
 
                 //poping the specific alert according to the barcode
@@ -133,9 +126,14 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                Intent RegIntent = new Intent(getContext(), tabf.class );
-                                activity.startActivity(RegIntent);
+                            //    dialog.cancel();//WORKS
+                            //    Intent RegIntent = new Intent(getContext(), subcat_Grid.class );//WORKS
+                            //    activity.startActivity(RegIntent);//WORKS
+                                // put the String to pass back into an Intent and close this activity
+                                  Intent intent = new Intent();
+                                  intent.putExtra(Intent.EXTRA_TEXT, Subtext);
+                                  activity.setResult(Activity.RESULT_OK, intent);
+                                   activity.finish();
                             }
                         });
                 Results.setPositiveButton(
@@ -143,9 +141,14 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                Intent RegIntent = new Intent(getContext(), ProductSearchResult.class);
-                                activity.startActivity(RegIntent);
-                                dialog.cancel();
+                             //   Intent RegIntent = new Intent(getContext(), ListSubCatResult.class); //WORKS
+                             //   activity.startActivity(RegIntent); //WORKS
+                              //  dialog.cancel(); //WORKS
+
+                                // put the String to pass back into an Intent and close this activity
+                                Intent intent = new Intent(getContext(), ListSubCatResult.class);
+                               intent.putExtra(Intent.EXTRA_TEXT, Subtext);
+                                activity.startActivity(intent);
                             }
                         });
 
@@ -162,28 +165,24 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
                 //setting the colour of the alert dialog
                 if (BarcodeC.equals("Y")) {
-                    //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(205,92,92)));
                     showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                     showInfo.getWindow().setBackgroundDrawableResource(R.color._GreenLight);
                 }
                 else if (BarcodeC.equals("N")) {
-                   //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(152,251,152)));
                     showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                showInfo.getWindow().setBackgroundDrawableResource(R.color._red);
+                    showInfo.getWindow().setBackgroundDrawableResource(R.color._red);
                 }
                 else if (BarcodeC.equals("M")) {
-                   //showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(255,255,153)));
                     showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
+                    showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
                 }
 
                 showInfo.show();
-
             }
         });
         return convertView;
 
-        }
+    }
 
     public class ItemViewHolder {
         TextView product_name;
@@ -191,4 +190,3 @@ public class MyAdapter extends ArrayAdapter<HashMap<String, String>> {
 
     }
 }
-

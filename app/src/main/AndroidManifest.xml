@@ -8,12 +8,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:layoutDirection="rtl"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:layoutDirection="rtl"
         android:textDirection="rtl"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+        <activity
+            android:name=".MainActivity"
             android:label="אפליקציית עמותת הצליאק בישראל">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,14 +25,18 @@
         <activity
             android:name=".MainMenu"
             android:label="תפריט ראשי" />
-        <activity android:name=".UpdateUser"
+        <activity
+            android:name=".Users.UpdateUser"
             android:label="עדכון פרטי משתמש" />
-        <activity android:name=".NewUserForm"
+        <activity
+            android:name=".Users.NewUserForm"
             android:label="רישום משתמש חדש" />
         <activity
             android:name=".Search"
-            android:label="חיפוש ידני" />
-        <activity android:name=".BarcodeScan"
+            android:label="חיפוש ידני"
+          android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".BarcodeScan"
             android:label="סריקת ברקוד" />
         <activity
             android:name=".tabf"
@@ -39,9 +44,16 @@
         <activity
             android:name=".ProductSearchResult"
             android:label="תוצאות החיפוש" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".Cat_Grid"
+            android:label="חיפוש לפי קטגוריות" />
+        <activity android:name=".subcat_Grid" />
+        <activity android:name=".ListSubCatResult"></activity>
     </application>
 
 </manifest>

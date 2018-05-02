@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/treefive"
-    tools:context="il.non.celiacc.NewUserForm">
+    tools:context="il.non.celiacc.Users.NewUserForm">
 
     <EditText
         android:id="@+id/etUsername"
@@ -18,7 +18,7 @@
         android:textSize="22sp"
         android:textAlignment="center"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etFirstname"
+        app:layout_constraintBottom_toTopOf="@+id/etNewFirstname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         android:textAlignment="center"
         android:hint="דואר אלקטרוני"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
+        app:layout_constraintBottom_toTopOf="@+id/etNewUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,11 +52,11 @@
         android:textAlignment="center"
         android:hint="שם פרטי"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etLastname"
+        app:layout_constraintBottom_toTopOf="@+id/etNewLastname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewUsername" />
 
     <EditText
         android:id="@+id/etLastname"
@@ -69,11 +69,11 @@
         android:textAlignment="center"
         android:hint="שם משפחה"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etPass"
+        app:layout_constraintBottom_toTopOf="@+id/etNewPass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etFirstname" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewFirstname" />
 
     <EditText
         android:id="@+id/etPass"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLastname" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewLastname" />
 
     <CheckBox
         android:id="@+id/cbIsmember"
@@ -101,10 +101,10 @@
         android:text="אני חבר עמותה"
         android:textAlignment="center"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/btRegister"
+        app:layout_constraintBottom_toTopOf="@+id/btUpdateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
         app:layout_constraintVertical_bias="0.858" />
 
     <Button
@@ -119,7 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
         app:layout_constraintVertical_bias="0.821" />
 
     <EditText
@@ -137,6 +137,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewPass" />
 
 </android.support.constraint.ConstraintLayout>
