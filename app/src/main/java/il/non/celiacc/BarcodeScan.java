@@ -35,11 +35,13 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_barcode_scan);
-       // Intent intent = getIntent();
-       // final String textUsername = intent.getStringExtra(Intent.EXTRA_TEXT);
         db = new MySqliteOpenHelper(this);
-
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    0);
+        }
         //defining the scanner and starting the camera
         scannerView = new ZXingScannerView(this);
         //scannerView.setResultHandler(new ZXingScannerResultHandler());
