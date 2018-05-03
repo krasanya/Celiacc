@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "395706576936",
+    "firebase_url": "https://celiacisrael-15b68.firebaseio.com",
+    "project_id": "celiacisrael-15b68",
+    "storage_bucket": "celiacisrael-15b68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395706576936:android:509757aee70c56d9",
+        "android_client_info": {
+          "package_name": "il.non.celiacc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395706576936-22u6oeddnjirvorblula85vtmcj0p67d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUwCGPvltMqGse2mn32U1C5RwCfQEnMlU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

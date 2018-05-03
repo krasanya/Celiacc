@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class MySqliteOpenHelper extends SQLiteOpenHelper {
 
     private static final String database_name = "databaseCeliac.db";
-    private static final int database_version = 8;
+    private static final int database_version = 12;
 
     public MySqliteOpenHelper(Context context) {
         super(context, database_name,null, database_version);

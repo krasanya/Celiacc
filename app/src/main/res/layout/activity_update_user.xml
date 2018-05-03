@@ -8,75 +8,58 @@
     tools:context="il.non.celiacc.Users.UpdateUser">
 
     <EditText
-        android:id="@+id/etNewUsername"
+        android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
+        android:ems="10"
         android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:hint="שם משתמש"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etNewFirstname"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etFirstname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etFirstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
-        android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
-        android:hint="אימייל"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etNewUsername"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etNewFirstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:ems="10"
-        android:background="@drawable/edit_texts"
         android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:hint="שם פרטי"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etNewLastname"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etLastname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <EditText
-        android:id="@+id/etNewLastname"
+        android:id="@+id/etLastname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
+        android:ems="10"
         android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:hint="שם משפחה"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etNewPass"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etPass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewFirstname" />
+        app:layout_constraintTop_toBottomOf="@+id/etFirstname" />
 
     <EditText
-        android:id="@+id/etNewPass"
+        android:id="@+id/etPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_texts"
@@ -87,29 +70,30 @@
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/etNewPassAgain"
+        app:layout_constraintBottom_toTopOf="@+id/etPassAgain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewLastname" />
+        app:layout_constraintTop_toBottomOf="@+id/etLastname" />
 
     <Button
         android:id="@+id/btUpdateUser"
         android:layout_width="207dp"
         android:layout_height="51dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="עדכן"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btBack"
+        app:layout_constraintTop_toBottomOf="@+id/etPass"
         app:layout_constraintVertical_bias="0.784" />
 
     <Button
-        android:id="@+id/btbackToMenu"
+        android:id="@+id/btBack"
         android:layout_width="92dp"
         android:layout_height="51dp"
         android:background="@drawable/buttons"
@@ -118,13 +102,14 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintEnd_toStartOf="@+id/btUpdateUser"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewPass"
+        app:layout_constraintTop_toBottomOf="@+id/etPass"
         app:layout_constraintVertical_bias="0.784" />
 
     <EditText
-        android:id="@+id/etNewPassAgain"
+        android:id="@+id/etPassAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_texts"
@@ -134,27 +119,41 @@
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/etNewPhone"
+        app:layout_constraintBottom_toTopOf="@+id/etPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewPass" />
+        app:layout_constraintTop_toBottomOf="@+id/etPass" />
 
     <EditText
-        android:id="@+id/etNewPhone"
+        android:id="@+id/etPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/edit_texts"
+        android:ems="10"
         android:fontFamily="@font/varela_round"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:hint="טלפון"
         android:inputType="phone"
+        android:textAlignment="center"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/btUpdateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNewPassAgain" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassAgain" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/etUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:fontFamily="@font/varela_round" />
 
 </android.support.constraint.ConstraintLayout>
