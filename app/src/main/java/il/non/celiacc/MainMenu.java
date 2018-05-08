@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import il.non.celiacc.Categories.CategoryGridActivity;
+import il.non.celiacc.Products.SearchProductActivity;
 import il.non.celiacc.Users.UpdateUser;
 
 public class MainMenu extends AppCompatActivity {
@@ -76,7 +78,7 @@ public class MainMenu extends AppCompatActivity {
         Searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent SearchIntent = new Intent (MainMenu.this,tabf.class);
+                Intent SearchIntent = new Intent (MainMenu.this,SearchProductActivity.class);
                 startActivity(SearchIntent);
             }
         });
@@ -84,7 +86,7 @@ public class MainMenu extends AppCompatActivity {
         ButtonCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent SearchIntent = new Intent (MainMenu.this,Cat_Grid.class);
+                Intent SearchIntent = new Intent (MainMenu.this,CategoryGridActivity.class);
                 startActivity(SearchIntent);
             }
         });

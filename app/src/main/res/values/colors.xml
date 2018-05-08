@@ -2,7 +2,11 @@
 <resources>
     <color name="_yellow">#BFf6e393</color>
     <color name="_blue">#303f9f</color>
-    <color name="_red">#BFFF6347</color>
-    <color name="_GreenLight">#BFc9f7c0</color>
-    <color name="_black">#BF000000</color>
+    <color name="_red">#802b20</color>
+    <color name="_redLight">#ff3943</color>
+    <color name="_GreenLight">#abffc0</color>
+    <color name="_Green">#247b37</color>
+    <color name="_Green1">#3eb959</color>
+    <color name="_White">#ffffff</color>
+    <color name="_black">#bf000000</color>
 </resources>

@@ -39,7 +39,7 @@
             android:name=".BarcodeScan"
             android:label="סריקת ברקוד" />
         <activity
-            android:name=".tabf"
+            android:name=".Products.SearchProductActivity"
             android:label="חיפוש מוצר" />
         <activity
             android:name=".ProductSearchResult"
@@ -50,10 +50,13 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".Cat_Grid"
+            android:name=".Categories.CategoryGridActivity"
             android:label="חיפוש לפי קטגוריות" />
-        <activity android:name=".subcat_Grid" />
-        <activity android:name=".ListSubCatResult"></activity>
+        <activity
+            android:name=".SubCategories.SubCatListItemResult"
+            android:label="תוצאות תת הקטגוריה" />
+
+        <activity android:name=".SubCategories.SubCategoryGridActivity"></activity>
     </application>
 
 </manifest>

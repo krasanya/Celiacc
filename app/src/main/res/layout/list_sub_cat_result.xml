@@ -1,51 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListSubCatResult">
+    tools:context=".SubCategories.SubCatListItemResult">
 
-    <ScrollView
-        android:layout_width="370dp"
-        android:layout_height="58dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp">
+     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvListOfProductsSubCatResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        tools:listitem="@layout/list_sub_cat_result" />
+
+</LinearLayout>
+
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".SubCategories.SubCatListItemResult">-->
+
+    <!--<ScrollView-->
+        <!--android:layout_width="370dp"-->
+        <!--android:layout_height="58dp"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--tools:layout_editor_absoluteY="0dp">-->
 
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:id="@+id/linearLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/tvIsGlutenFree"
-                android:layout_width="359dp"
-                android:layout_height="11dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tvProdName"
-                app:layout_constraintTop_toBottomOf="@+id/tvProdName"
-                tools:layout_conversion_absoluteHeight="28dp"
-                tools:layout_conversion_absoluteWidth="37dp" />
+            <!--<TextView-->
+                <!--android:id="@+id/tvIsGlutenFree"-->
+                <!--android:layout_width="359dp"-->
+                <!--android:layout_height="11dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/tvProdName"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/tvProdName"-->
+                <!--tools:layout_conversion_absoluteHeight="28dp"-->
+                <!--tools:layout_conversion_absoluteWidth="37dp" />-->
 
-            <TextView
-                android:id="@+id/tvProdName"
-                android:layout_width="350dp"
-                android:layout_height="47dp"
-                android:text="שם המוצר"
-                android:textSize="22sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvIsGlutenFree"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_conversion_absoluteHeight="40dp"
-                tools:layout_conversion_absoluteWidth="384dp" />
-        </android.support.constraint.ConstraintLayout>
-        <!--/>-->
-    </ScrollView>
+            <!--<TextView-->
+                <!--android:id="@+id/tvProdName"-->
+                <!--android:layout_width="350dp"-->
+                <!--android:layout_height="47dp"-->
+                <!--android:text="שם המוצר"-->
+                <!--android:textSize="22sp"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/tvIsGlutenFree"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.8"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--tools:layout_conversion_absoluteHeight="40dp"-->
+                <!--tools:layout_conversion_absoluteWidth="384dp" />-->
+        <!--</android.support.constraint.ConstraintLayout>-->
 
-</android.support.constraint.ConstraintLayout>
+    <!--</ScrollView>-->
+
+<!--</android.support.constraint.ConstraintLayout>-->

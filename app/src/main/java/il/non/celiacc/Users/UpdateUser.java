@@ -40,7 +40,6 @@ public class UpdateUser extends AppCompatActivity {
     private EditText etPhone ;
     private TextView tvUsername;
 
-    private Boolean match;
     private Boolean NotFound;
     private String currentemail;
 
@@ -133,6 +132,7 @@ public class UpdateUser extends AppCompatActivity {
                 //updating the password of the user
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+                //TODO: אם לא מעדכנים אז זה לא ייכנס לזה. ואיך מתריעים לאדם לצאת ולהיכנס שוב אם הוא לא מצליח//
                 if (user != null) {
                     user.updatePassword(strPass).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -171,7 +171,6 @@ public class UpdateUser extends AppCompatActivity {
 
         final String userEmail = firebaseAuth.getCurrentUser().getEmail().toString();
         final List<String> grandChildren= new ArrayList<>();
-        match = false;
         NotFound=true;
         progressDialog.setMessage("נא להמתין");
         progressDialog.show();
@@ -190,7 +189,6 @@ public class UpdateUser extends AppCompatActivity {
                         for (DataSnapshot Gchild: grandchild){
                             currentemail=Gchild.getValue().toString();
                             if (currentemail.equals(userEmail)){
-                                match=true;
                                 NotFound=false;
 
                                 //retrieving the data of the user USER NAME and displaying in the editText
