@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/treefive"
+    tools:context="il.non.celiacc.RetrievePass">
+
+    <EditText
+        android:id="@+id/etEmailReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_texts"
+        android:ems="10"
+        android:fontFamily="@font/varela_round"
+        android:hint="אימייל"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#273746"
+        android:textColorHighlight="#273746"
+        android:textSize="22sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btReset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.626" />
+
+    <Button
+        android:id="@+id/btBackToSignIn"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/varela_round"
+        android:text="חזרה"
+        android:textColor="#273746"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailReset"
+        app:layout_constraintVertical_bias="0.893" />
+
+    <Button
+        android:id="@+id/btReset"
+        android:layout_width="140dp"
+        android:layout_height="65dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/varela_round"
+        android:text="אפס סיסמא"
+        android:textColor="#273746"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btBackToSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailReset" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="225dp"
+        android:layout_height="77dp"
+        android:text="לשם איפוס הסיסמא אנא הזן את האימייל שלך. לאחר מכן ישלח לך אימייל עם איפוס סיסמא"
+        android:textAlignment="center"
+        android:textColor="@color/_black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etEmailReset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
+
+</android.support.constraint.ConstraintLayout>

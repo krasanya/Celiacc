@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import il.non.celiacc.MainActivity;
-import il.non.celiacc.MainMenu;
 import il.non.celiacc.R;
 
 
@@ -86,7 +85,7 @@ public class UpdateUser extends AppCompatActivity {
                     //helping var for each box
                     etPass = findViewById(R.id.etPass);
                     etPass2 =  findViewById(R.id.etPassAgain);
-                    etUsername =  findViewById(R.id.etUsername);
+                    etUsername =  findViewById(R.id.etEmailReset);
                     etFirstname =  findViewById(R.id.etFirstname);
                     etLastname =  findViewById(R.id.etLastname);
                     etPhone =  findViewById(R.id.etPhone);
@@ -196,7 +195,7 @@ public class UpdateUser extends AppCompatActivity {
                                 databaseReferenceUser.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        ((TextView) findViewById(R.id.etUsername)).setText(dataSnapshot.getValue().toString());
+                                        ((TextView) findViewById(R.id.etEmailReset)).setText(dataSnapshot.getValue().toString());
                                     }
 
                                     @Override

@@ -34,7 +34,7 @@
         <activity
             android:name=".Search"
             android:label="חיפוש ידני"
-          android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BarcodeScan"
             android:label="סריקת ברקוד" />
@@ -55,8 +55,8 @@
         <activity
             android:name=".SubCategories.SubCatListItemResult"
             android:label="תוצאות תת הקטגוריה" />
-
-        <activity android:name=".SubCategories.SubCategoryGridActivity"></activity>
+        <activity android:name=".SubCategories.SubCategoryGridActivity" />
+        <activity android:name=".RetrievePass"></activity>
     </application>
 
 </manifest>

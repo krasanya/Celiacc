@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 /////////////////
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(ExitIntent);
 //        }
 
-        etUsername = (EditText) findViewById(R.id.etUsername);
+        etUsername = (EditText) findViewById(R.id.etEmailReset);
         etPassword = (EditText) findViewById(R.id.etPassword);
 
         progressDialog = new ProgressDialog(this);
@@ -70,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v1) {
                 Intent NewUserIntent = new Intent (MainActivity.this,NewUserForm.class);
                 startActivity(NewUserIntent);
+            }
+        });
+
+        TextView resetPass= (TextView) findViewById(R.id.ForgotPass);
+        resetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ResetIntent = new Intent (MainActivity.this,RetrievePass.class);
+                startActivity(ResetIntent);
             }
         });
 

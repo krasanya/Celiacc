@@ -1,31 +1,40 @@
 package il.non.celiacc.Products;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import il.non.celiacc.MainMenu;
 import il.non.celiacc.R;
 
@@ -34,13 +43,23 @@ public class SearchProductActivity extends AppCompatActivity
     ArrayList<Product> p = new ArrayList<>();
 
     private Button searchNow;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_product_activity);
         final RecyclerView recyclerView = findViewById(R.id.rvProducts);
         final ProductAdapter productAdapter = new ProductAdapter(SearchProductActivity.this, SearchProductActivity.this);
-
+        //Create a new ArrayAdapter
+        final ArrayAdapter<String> autoCompleteProduct = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        final ArrayAdapter<String> autoCompleteManufacturer = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        final ArrayList<String> noDuplicatesM = new ArrayList<>();
+        final ArrayList<String> noDuplicatesP = new ArrayList<>();
+        noDuplicatesP.clear();
+        noDuplicatesM.clear();
+        autoCompleteProduct.clear();
+        autoCompleteProduct.clear();
         final AutoCompleteTextView etmanu = (AutoCompleteTextView) findViewById(R.id.etManu);
         final AutoCompleteTextView etyalla = (AutoCompleteTextView) findViewById(R.id.etPrody);
 
@@ -62,11 +81,7 @@ public class SearchProductActivity extends AppCompatActivity
                             if (dataSnapshot.exists()) {
                                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                                     Product product = new Product();
-                                    product.setProductName(child.getValue(Product.class).getProductName());
-                                    product.setBarcode(child.getValue(Product.class).getBarcode());
-                                    product.setCategoryName(child.getValue(Product.class).getCategoryName());
-
-
+                                    createProduct(child,product);
                                     if (!manuToSearch.equals("")) {
                                         if (child.getValue(Product.class).getManufacturer().contains(manuToSearch)) {
                                             p.add(product);
@@ -95,21 +110,50 @@ public class SearchProductActivity extends AppCompatActivity
                         }
                     });
 
+                Query queryM = product.orderByChild("Manufacturer").startAt(manuToSearch).endAt(manuToSearch+ "/uf8ff");
+                queryM.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot child : dataSnapshot.getChildren()) {
+                                Product product = new Product();
+                                createProduct(child,product);
+                               // p.add(product);
+                                if (productToSearch.equals("")) {
+                                    p.add(product);
+                                }
+
+                            }
+                            productAdapter.setProductData(p);
+                            GridLayoutManager gridLayoutManager = new GridLayoutManager(
+                                    SearchProductActivity.this, 1, LinearLayoutManager.VERTICAL, false);
+                            recyclerView.setLayoutManager(gridLayoutManager);
+                            recyclerView.setAdapter(productAdapter);
+                            recyclerView.setHasFixedSize(true);
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("CANCELLED", "Error trying to get manufacturers ");
+                        Toast.makeText(getApplicationContext(),
+                                "Error trying to get manufacturers", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        //Create a new ArrayAdapter
-        final ArrayAdapter<String> autoCompleteProduct = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
-        final ArrayAdapter<String> autoCompleteManufacturer = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
-        final ArrayList<String> noDuplicatesM = new ArrayList<>();
-        final ArrayList<String> noDuplicatesP = new ArrayList<>();
-        noDuplicatesP.clear();
-        noDuplicatesM.clear();
         //Child the root before all the push() keys are found and add a ValueEventListener()
         database.child("Products").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                noDuplicatesP.clear();
+                noDuplicatesM.clear();
+                autoCompleteProduct.clear();
+                autoCompleteProduct.clear();
                 //"For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
                 for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
                     //Get the suggestion
@@ -159,92 +203,102 @@ public class SearchProductActivity extends AppCompatActivity
 
     @Override
     public void onClick(int productPosition) {
-        Log.d("ENTER","OK");
-        String Title="";
-        String FirstLingMessage = "";
-        String SecondLingMessage ="";
-        String ThirdLingMessage = "";
-        String BarcodeC="";
+        buildAlertDialog(p.get(productPosition));
+        //Product product = p.get(productPosition);
 
-//        Cursor c = db.findProductBarcodeCursor(products.get(productPosition).get("Barcode").toString());
-//        if (c==null)
-//        {
-//            BarcodeC="Not Found";
-//        }
-//        else{
-//            c.moveToFirst();
-//            BarcodeC= c.getString(c.getColumnIndex("IsGlutenFree"));
-//         }
-//
-//        //building an alert dialog
-//        AlertDialog.Builder Results = new AlertDialog.Builder(SearchProductActivity.this);
-//
-//        //setting the content of the alert dialog
-//        if (BarcodeC.equals("Not Found")){
-//            Title=products.get(productPosition).get("Barcode").toString();
-//            FirstLingMessage="המוצר שביקשת אינו נמצא במאגר, ועל כן אין מידע נוסף לגביו";
-//            SecondLingMessage="במידה ותרצה תוכל לפנות לעמותה והנושא יבדק.";
-//        }
-//        else
-//        {
-//            FirstLingMessage="שם המוצר: "+c.getString(c.getColumnIndex("ProductName"));
-//            SecondLingMessage="יצרן: "+c.getString(c.getColumnIndex("Manufacturer"));
-//            if (BarcodeC.equals("N")){
-//                ThirdLingMessage="";
-//            }
-//            else ThirdLingMessage="תאריך אישור: "+c.getString(c.getColumnIndex("dateValid"));
-//        }
-//
-//        //setting the title of the alert dialog
-//        if (BarcodeC.equals("Y")) {
-//            Title = "המוצר אינו מכיל גלוטן";
-//        }
-//        else if (BarcodeC.equals("N")) {
-//            Title = "המוצר מכיל גלוטן";
-//        }
-//        else if (BarcodeC.equals("M")) {
-//            Title="המוצר עלול להכיל גלוטן";
-//        }
-//
-//        //poping the specific alert according to the barcode
-//        Results.setTitle(Title);
-//        Results.setMessage(FirstLingMessage + "\n" + SecondLingMessage + "\n" + ThirdLingMessage);
-//        Results.setCancelable(false);
-//
-//        Results.setNegativeButton(
-//                "חזור לרשימת התוצאות",
-//                new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        // change color of the buttons in alert dialog
-//        final AlertDialog showInfo = Results.create();
-//        showInfo.setOnShowListener( new DialogInterface.OnShowListener() {
-//            @Override
-//            public void onShow(DialogInterface arg0) {
-//                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-//            }
-//        });
-//
-//        //setting the colour of the alert dialog
-//        if (BarcodeC.equals("Y")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._GreenLight);
-//        }
-//        else if (BarcodeC.equals("N")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._red);
-//        }
-//        else if (BarcodeC.equals("M")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
-//        }
-//
-//        showInfo.show();
-//
+
     }
+
+    public Product createProduct(DataSnapshot child, Product product){
+        product.setBarcode(child.getValue(Product.class).getBarcode());
+        product.setProductName(child.getValue(Product.class).getProductName());
+        product.setCategoryName(child.getValue(Product.class).getCategoryName());
+        product.setSubCategoryName(child.getValue(Product.class).getSubCategoryName());
+        product.setManufacturer(child.getValue(Product.class).getManufacturer());
+        product.setImporter(child.getValue(Product.class).getImporter());
+        product.setIsGlutenFree(child.getValue(Product.class).getIsGlutenFree());
+        product.setAdditionalInfo(child.getValue(Product.class).getAdditionalInfo());
+        product.setDateValid(child.getValue(Product.class).getDateValid());
+        product.setWeight(child.getValue(Product.class).getWeight());
+        product.setWeight(child.getValue(Product.class).getWeight());
+        product.setPassover(child.getValue(Product.class).isPassover());
+        return product;
+    }
+
+    public void buildAlertDialog(Product product) {
+        //building an alert dialog
+        AlertDialog.Builder Results = new AlertDialog.Builder(this);
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.cancel();
+         String Title="";
+         String FirstLingMessage = "";
+         String SecondLingMessage = "";
+         String ThirdLingMessage = "";
+
+        //setting the content of the alert dialog
+        if (product.getBarcode().equals("Not Found")) {
+            Title = "המוצר לא נמצא!";
+            FirstLingMessage = "המוצר שביקשת אינו נמצא במאגר, ועל כן אין מידע נוסף לגביו.";
+            SecondLingMessage = "במידה ותרצה תוכל לפנות לעמותה והנושא יבדק.";
+        } else {
+            FirstLingMessage = "שם המוצר: " + product.getProductName();
+            SecondLingMessage = "יצרן: " + product.getManufacturer();
+            if (product.getIsGlutenFree().equals("N")) {
+                ThirdLingMessage = "";
+            } else ThirdLingMessage = "תאריך אישור: " + product.getDateValid();
+        }
+
+        //setting the title of the alert dialog
+        if (product.getIsGlutenFree().equals("Y")) {
+            Title = "המוצר אינו מכיל גלוטן";
+            Results.setIcon(R.drawable.nogluteninside);
+        } else if (product.getIsGlutenFree().equals("N")) {
+            Title = "המוצר מכיל גלוטן";
+            Results.setIcon(R.drawable.hasgluten);
+        } else if (product.getIsGlutenFree().equals("M")) {
+            Title = "המוצר עלול להכיל גלוטן";
+            Results.setIcon(R.drawable.mayhavegluten);
+        }
+
+        //poping the specific alert according to the barcode
+        Results.setTitle(Title);
+
+        LayoutInflater factory = LayoutInflater.from(this);
+        final View view = factory.inflate(R.layout.alertdialog, null);
+        //ImageView image= (ImageView) view.findViewById(R.id.imageAlert);
+       // StorageReference spaceRef = storageRef.child(IMGref);
+       // Glide.with(getApplicationContext()).load(spaceRef).into(image);
+        TextView text= (TextView) view.findViewById(R.id.messageAlert);
+        text.setText( "\n"+FirstLingMessage + "\n" + "\n"+ SecondLingMessage + "\n" + "\n"+ ThirdLingMessage);
+        Results.setCancelable(false);
+        Results.setView(view);
+
+        //defining the positive button that will let the user scan again
+        Results.setPositiveButton(
+                "חזרה לרשימת התוצאות",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog showInfo = Results.create();
+
+        showInfo.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.WHITE);
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(17);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                }
+            }
+        });
+
+        showInfo.show();
+    }//buildAlertDialog
 
 }

@@ -51,7 +51,7 @@ public class NewUserForm extends AppCompatActivity {
         btRegister = findViewById(R.id.btRegister);
         //defining the edit texts according to the new user form
         etEmail =  findViewById(R.id.etEmail);
-        etUsername =  findViewById(R.id.etUsername);
+        etUsername =  findViewById(R.id.etEmailReset);
         etFirstname = findViewById(R.id.etFirstname);
         etLastname =  findViewById(R.id.etLastname);
         etPass =  findViewById(R.id.etPass);

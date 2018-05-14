@@ -38,6 +38,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.zxing.Result;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -154,7 +155,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
                             currentBarcode = Gchild.getValue().toString();
                             if (currentBarcode.equals(barcodeCode)) {
                                 NotFound = false;
-                                IMGref="products/"+barcodeCode+".jpg";
+                                IMGref="products/"+barcodeCode+".png";
 
                                 //retrieving the data of the product IG GLUTEN FREE
                                 databaseReferenceIsGlutenFree = databaseReferenceProducts.child(parent).child("IsGlutenFree");
@@ -278,7 +279,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
         final View view = factory.inflate(R.layout.alertdialog, null);
         ImageView image= (ImageView) view.findViewById(R.id.imageAlert);
         StorageReference spaceRef = storageRef.child(IMGref);
-        Glide.with(getApplicationContext()).load(spaceRef).into(image);
+        Glide.with(getApplicationContext()).load(spaceRef.toString()).into(image);
         TextView text= (TextView) view.findViewById(R.id.messageAlert);
         text.setText( "\n"+FirstLingMessage + "\n" + "\n"+ SecondLingMessage + "\n" + "\n"+ ThirdLingMessage);
         Results.setCancelable(false);

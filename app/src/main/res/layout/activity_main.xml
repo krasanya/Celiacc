@@ -8,7 +8,7 @@
     tools:context="il.non.celiacc.MainActivity">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etEmailReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_texts"
@@ -90,11 +90,23 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textColorHighlight="@android:color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:text="שכחת את הסיסמא?"
+        android:textColor="@color/_black"
+        app:layout_constraintBottom_toTopOf="@+id/btLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.235" />
 
     <!--<TextView-->
     <!--android:id="@+id/textView5"-->
