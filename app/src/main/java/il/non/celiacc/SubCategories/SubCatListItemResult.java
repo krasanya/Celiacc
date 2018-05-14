@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,6 +90,19 @@ public class SubCatListItemResult extends AppCompatActivity
                 Log.d("CANCELLED", "Error trying to get subcategories ");
                 Toast.makeText(getApplicationContext(),
                         "Error trying to get subcategories", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button button = findViewById(R.id.btBackToSubCat);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                String catNameToPass = p.get(0).getCategoryName();
+                // start the SecondActivity
+                Intent intentExit = new Intent(SubCatListItemResult.this, SubCategoryGridActivity.class);
+                intentExit.putExtra("CATEGORY_NAME", catNameToPass);
+                startActivity(intentExit);
             }
         });
 

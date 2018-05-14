@@ -1,6 +1,9 @@
 package il.non.celiacc.Categories;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +23,7 @@ import java.util.List;
 import il.non.celiacc.R;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryAdapterViewHolder> {
-
+    Bitmap  bitmap;
     private CategoryAdapterOnClickHandler mOnClickHandler;
     private Context mContext;
     private ArrayList<Category> mCategoryList ;
@@ -44,7 +50,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryAdapterViewHolder holder, int position) {
         if(mCategoryList.get(position) != null) {
         holder.name.setText(mCategoryList.get(position).getCategoryName());
-
+        Picasso.get().load(mCategoryList.get(position).getIMG()).into(holder.image);
         }
     }
 
@@ -84,5 +90,32 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
     }
 
-
 }
+//    public class GetImageFromURL extends AsyncTask<String,Void,Bitmap> {
+//        ImageView imgV;
+//
+//        public GetImageFromURL(ImageView imgV) {
+//            this.imgV = imgV;
+//        }
+//
+//        @Override
+//        protected Bitmap doInBackground(String... url) {
+//            String urlDisplay = url[0];
+//            bitmap = null;
+//            try {
+//                InputStream str = new java.net.URL(urlDisplay).openStream();
+//                BitmapFactory.decodeStream(str);} catch (Exception e){
+//                e.printStackTrace();
+//            }
+//
+//            return bitmap;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Bitmap bitmap) {
+//            super.onPostExecute(bitmap);
+//            imgV.setImageBitmap(bitmap);
+//        }
+//    }
+
+

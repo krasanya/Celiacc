@@ -16,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -49,6 +50,8 @@ public class SearchProductActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_product_activity);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         final RecyclerView recyclerView = findViewById(R.id.rvProducts);
         final ProductAdapter productAdapter = new ProductAdapter(SearchProductActivity.this, SearchProductActivity.this);
         //Create a new ArrayAdapter
@@ -56,8 +59,6 @@ public class SearchProductActivity extends AppCompatActivity
         final ArrayAdapter<String> autoCompleteManufacturer = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         final ArrayList<String> noDuplicatesM = new ArrayList<>();
         final ArrayList<String> noDuplicatesP = new ArrayList<>();
-        noDuplicatesP.clear();
-        noDuplicatesM.clear();
         autoCompleteProduct.clear();
         autoCompleteProduct.clear();
         final AutoCompleteTextView etmanu = (AutoCompleteTextView) findViewById(R.id.etManu);
@@ -68,6 +69,8 @@ public class SearchProductActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                     p.clear();
+                    noDuplicatesP.clear();
+                    noDuplicatesM.clear();
                     // To String
                     final String productToSearch = etyalla.getText().toString();
                     final String manuToSearch = etmanu.getText().toString();
@@ -118,7 +121,6 @@ public class SearchProductActivity extends AppCompatActivity
                             for (DataSnapshot child : dataSnapshot.getChildren()) {
                                 Product product = new Product();
                                 createProduct(child,product);
-                               // p.add(product);
                                 if (productToSearch.equals("")) {
                                     p.add(product);
                                 }

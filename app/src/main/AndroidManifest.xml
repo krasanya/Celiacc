@@ -31,19 +31,19 @@
         <activity
             android:name=".Users.NewUserForm"
             android:label="רישום משתמש חדש" />
-        <activity
-            android:name=".Search"
-            android:label="חיפוש ידני"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <!--<activity-->
+            <!--android:name=".Search"-->
+            <!--android:label="חיפוש ידני"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".BarcodeScan"
             android:label="סריקת ברקוד" />
         <activity
             android:name=".Products.SearchProductActivity"
             android:label="חיפוש מוצר" />
-        <activity
-            android:name=".ProductSearchResult"
-            android:label="תוצאות החיפוש" />
+        <!--<activity-->
+            <!--android:name=".ProductSearchResult"-->
+            <!--android:label="תוצאות החיפוש" />-->
 
         <meta-data
             android:name="preloaded_fonts"

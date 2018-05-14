@@ -76,6 +76,7 @@ implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent intentExit = new Intent(SubCategoryGridActivity.this, CategoryGridActivity.class);//TabsActivity.class);
                 startActivity(intentExit);
             }
@@ -88,6 +89,7 @@ implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
         // get the text to pass
         String subCatNameToPass = c.get(categoryPosition).getSubCategoryName();
         // start the SecondActivity
+         finish();
         Intent intent = new Intent(SubCategoryGridActivity.this, SubCatListItemResult.class);
         intent.putExtra("SUB_CATEGORY", subCatNameToPass);
         startActivity(intent);
