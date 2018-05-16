@@ -44,14 +44,15 @@ public class SubCatListItemResult extends AppCompatActivity
         setContentView(R.layout.list_sub_cat_result);
         // get the text from MainActivity
         Intent intent2 = getIntent();
-        String Subtext = intent2.getStringExtra("SUB_CATEGORY");
+        final String Subtext = intent2.getStringExtra("SUB_CATEGORY");
+        final String Cattext = intent2.getStringExtra("CATEGORY");
 
         // use the text
         final RecyclerView recyclerView = findViewById(R.id.rvListOfProductsSubCatResult);
        final SubCatListAdapter adapt = new SubCatListAdapter(getApplicationContext(), (SubCatListAdapter.SubCatListAdapterOnClickHandler) SubCatListItemResult.this);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference subcategory = reference.child("Products");
+        final DatabaseReference subcategory = reference.child("Products");
         Query query = subcategory.orderByChild("SubCategoryName").equalTo(Subtext);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -98,10 +99,8 @@ public class SubCatListItemResult extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 finish();
-                String catNameToPass = p.get(0).getCategoryName();
-                // start the SecondActivity
                 Intent intentExit = new Intent(SubCatListItemResult.this, SubCategoryGridActivity.class);
-                intentExit.putExtra("CATEGORY_NAME", catNameToPass);
+                intentExit.putExtra("CATEGORY_NAME", Cattext);
                 startActivity(intentExit);
             }
         });
