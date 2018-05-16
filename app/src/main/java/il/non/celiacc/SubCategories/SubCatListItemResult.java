@@ -154,9 +154,6 @@ public class SubCatListItemResult extends AppCompatActivity
 
         LayoutInflater factory = LayoutInflater.from(this);
         final View view = factory.inflate(R.layout.alertdialog, null);
-        //ImageView image= (ImageView) view.findViewById(R.id.imageAlert);
-        // StorageReference spaceRef = storageRef.child(IMGref);
-        // Glide.with(getApplicationContext()).load(spaceRef).into(image);
         TextView text= (TextView) view.findViewById(R.id.messageAlert);
         text.setText( "\n"+FirstLingMessage + "\n" + "\n"+ SecondLingMessage + "\n" + "\n"+ ThirdLingMessage);
         Results.setCancelable(false);

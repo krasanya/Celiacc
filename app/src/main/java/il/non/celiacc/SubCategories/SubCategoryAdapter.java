@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,6 +45,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
     public void onBindViewHolder(@NonNull SubCategoryAdapter.SubCategoryAdapterViewHolder holder, int position) {
         if(mSubCategoryList.get(position) != null) {
             holder.name.setText(mSubCategoryList.get(position).getSubCategoryName());
+            Picasso.get().load(mSubCategoryList.get(position).getImg()).into(holder.image);
         }
     }
 

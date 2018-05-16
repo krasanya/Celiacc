@@ -102,6 +102,33 @@ public class SearchProductActivity extends AppCompatActivity
                                 recyclerView.setAdapter(productAdapter);
                                 recyclerView.setHasFixedSize(true);
                             }
+//                            else{
+//                                if (manuToSearch.equals("")){
+//                                    FirebaseDatabase.getInstance().getReference().child("Products").orderByChild("ProductName").addListenerForSingleValueEvent
+//                                            (new ValueEventListener() {
+//                                                @Override
+//                                                public void onDataChange(DataSnapshot dataSnapshot) {
+//                                                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+//                                                        Product product = new Product();
+//                                                        createProduct(child, product);
+//                                                        p.add(product);
+//                                                    }
+//                                                }
+//
+//                                                @Override
+//                                                public void onCancelled(DatabaseError databaseError) {
+//
+//                                                }
+//                                            });
+//                                    productAdapter.setProductData(p);
+//                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(
+//                                            SearchProductActivity.this, 1, LinearLayoutManager.VERTICAL, false);
+//                                    recyclerView.setLayoutManager(gridLayoutManager);
+//                                    recyclerView.setAdapter(productAdapter);
+//                                    recyclerView.setHasFixedSize(true);
+//
+//                                }
+//                            }
 
                         }
 

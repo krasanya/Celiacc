@@ -1,5 +1,6 @@
 package il.non.celiacc.SubCategories;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,11 +30,15 @@ import il.non.celiacc.R;
 public class SubCategoryGridActivity extends AppCompatActivity
 implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
 
-        ArrayList<SubCategory> c = new ArrayList<>();
+    private ProgressDialog progressDialog;
+    ArrayList<SubCategory> c = new ArrayList<>();
         @Override
         protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sub_category_grid_activity);
+            progressDialog = new ProgressDialog(this); // on create
+            progressDialog.setMessage("נא להמתין");
+            progressDialog.show();
 
         // get the text from Category
         Intent intent = getIntent();
@@ -53,6 +58,7 @@ implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
                             SubCategory cat = new SubCategory();
                             cat.setSubCategoryName(child.getValue(SubCategory.class).getSubCategoryName());
                             cat.setCategory(child.getValue(SubCategory.class).getCategory());
+                            cat.setImg(child.getValue(SubCategory.class).getImg());
                             c.add(cat);
                         }
                         subcategoryAdapter.setSubCategoryData(c);
@@ -62,7 +68,7 @@ implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
                         recyclerView.setLayoutManager(gridLayoutManager);
                         recyclerView.setHasFixedSize(true);
                     }
-
+                    progressDialog.cancel();
                 }
 
                 @Override

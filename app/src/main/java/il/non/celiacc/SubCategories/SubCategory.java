@@ -5,7 +5,7 @@ import java.sql.Blob;
 public class SubCategory {
     private String SubCategoryName; // PRIMARY KEY   NOT NULL
     private String category; // References CATEGORIES (CategoryName) NOT NULL
-    private  Blob Img;
+    private  String IMG;
 
     public String getCategory() {
         return category;
@@ -15,12 +15,12 @@ public class SubCategory {
         this.category = category;
     }
 
-    public Blob getImg() {
-        return Img;
+    public String getImg() {
+        return IMG;
     }
 
-    public void setImg(Blob img) {
-        Img = img;
+    public void setImg(String img) {
+        IMG = img;
     }
 
 
