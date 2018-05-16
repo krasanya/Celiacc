@@ -102,33 +102,40 @@ public class SearchProductActivity extends AppCompatActivity
                                 recyclerView.setAdapter(productAdapter);
                                 recyclerView.setHasFixedSize(true);
                             }
-//                            else{
-//                                if (manuToSearch.equals("")){
-//                                    FirebaseDatabase.getInstance().getReference().child("Products").orderByChild("ProductName").addListenerForSingleValueEvent
-//                                            (new ValueEventListener() {
-//                                                @Override
-//                                                public void onDataChange(DataSnapshot dataSnapshot) {
-//                                                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-//                                                        Product product = new Product();
-//                                                        createProduct(child, product);
-//                                                        p.add(product);
-//                                                    }
-//                                                }
-//
-//                                                @Override
-//                                                public void onCancelled(DatabaseError databaseError) {
-//
-//                                                }
-//                                            });
-//                                    productAdapter.setProductData(p);
-//                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(
-//                                            SearchProductActivity.this, 1, LinearLayoutManager.VERTICAL, false);
-//                                    recyclerView.setLayoutManager(gridLayoutManager);
-//                                    recyclerView.setAdapter(productAdapter);
-//                                    recyclerView.setHasFixedSize(true);
-//
-//                                }
-//                            }
+                            else{
+                                Log.d("ALL","inside");
+                                if (manuToSearch.equals("")){
+                                    Log.d("ALL","inside222");
+                                    FirebaseDatabase.getInstance().getReference().child("Products").orderByChild("ProductName").addListenerForSingleValueEvent
+                                            (new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    Log.d("ALL","inside3333");
+                                                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                                                        Product product = new Product();
+                                                        createProduct(child, product);
+                                                        Log.d("ALL","inside4444");
+                                                        p.add(product);
+
+                                                    }
+                                                    productAdapter.setProductData(p);
+                                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(
+                                                            SearchProductActivity.this, 1, LinearLayoutManager.VERTICAL, false);
+                                                    recyclerView.setLayoutManager(gridLayoutManager);
+                                                    recyclerView.setAdapter(productAdapter);
+                                                    recyclerView.setHasFixedSize(true);
+
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+                                                    Toast.makeText(getApplicationContext(),
+                                                            "Error trying to get EMPTY", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+
+                                }
+                            }
 
                         }
 
@@ -248,7 +255,6 @@ public class SearchProductActivity extends AppCompatActivity
         product.setIsGlutenFree(child.getValue(Product.class).getIsGlutenFree());
         product.setAdditionalInfo(child.getValue(Product.class).getAdditionalInfo());
         product.setDateValid(child.getValue(Product.class).getDateValid());
-        product.setWeight(child.getValue(Product.class).getWeight());
         product.setWeight(child.getValue(Product.class).getWeight());
         product.setPassover(child.getValue(Product.class).isPassover());
         return product;
