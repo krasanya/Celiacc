@@ -160,14 +160,14 @@ public class SubCatListItemResult extends AppCompatActivity
 
         //defining the positive button that will let the user scan again
         Results.setPositiveButton(
-                "חזרה לרשימת התוצאות",
+                "אישור",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
-        Results.setNegativeButton(
+        Results.setNeutralButton(
                 "חזרה לתת הקטגוריה",
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -190,14 +190,25 @@ public class SubCatListItemResult extends AppCompatActivity
             @Override
             public void onShow(DialogInterface arg0) {
                 showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.WHITE);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.WHITE);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(17);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize(17);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.BLACK);
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(15);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextSize(15);
+                if (product.getIsGlutenFree().equals("Y")){
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#3eb959"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#3eb959"));
+                }
+                else if (product.getIsGlutenFree().equals("N"))
+                {
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#ff3943"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#ff3943"));
+                }
+                else{
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#FAEBD7"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#FAEBD7"));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 }
             }
         });

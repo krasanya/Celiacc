@@ -4,8 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/treefive"
+    android:theme="@style/AppTheme.NoActionBar"
+
     tools:context="il.non.celiacc.RetrievePass">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/_White"
+        >
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="70sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="איפוס סיסמא"
+            android:textAlignment="center"
+            android:textColor="@color/_black" />
+
+    </android.support.v7.widget.Toolbar>
 
     <EditText
         android:id="@+id/etEmailReset"
@@ -47,6 +74,7 @@
         android:id="@+id/btReset"
         android:layout_width="140dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="אפס סיסמא"
@@ -61,6 +89,7 @@
         android:id="@+id/textView"
         android:layout_width="225dp"
         android:layout_height="77dp"
+        android:layout_marginTop="75dp"
         android:text="לשם איפוס הסיסמא אנא הזן את האימייל שלך. לאחר מכן ישלח לך אימייל עם איפוס סיסמא"
         android:textAlignment="center"
         android:textColor="@color/_black"

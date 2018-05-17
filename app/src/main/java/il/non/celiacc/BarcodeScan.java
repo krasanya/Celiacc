@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.support.v4.app.ActivityCompat;
@@ -24,11 +25,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
+
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,9 +62,8 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
     private Boolean NotFound;
     private String parent;
     private String currentBarcode;
-    private String IsGlutenFree;
+    private String IsGlutenFree="Not Found";
     private String ProductName;
-    private String Weight;
     private String IMGURL;
     private String Manufacturer;
     private String DateValid;
@@ -124,8 +122,22 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
         if (resultCamera.substring(1,1).equals("0")){
             resultCamera=resultCamera.substring(2);
         }
-
         findBarcode(resultCamera);
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                if (IsGlutenFree=="Not Found"){
+                buildAlertDialog(IsGlutenFree, Manufacturer, DateValid, ProductName,IMGURL);
+            }
+
+        }
+        }, 1000);
+
+
+
 
         setContentView(R.layout.activity_barcode_scan);
             scannerView.stopCamera();
@@ -222,12 +234,14 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
                                     }
                                 });
+
                                     break;
 
                             }
                         }
                     } else break;
                 }
+
             }//OnDataChange
 
             @Override
@@ -235,7 +249,6 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
             }
         });
-
 
     }//findBarcode
 
@@ -277,9 +290,9 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
         LayoutInflater factory = LayoutInflater.from(this);
         final View view = factory.inflate(R.layout.alertdialog, null);
-        ImageView image= (ImageView) view.findViewById(R.id.imageAlert);
-        StorageReference spaceRef = storageRef.child(IMGref);
-        Glide.with(getApplicationContext()).load(spaceRef.toString()).into(image);
+//        ImageView image= (ImageView) view.findViewById(R.id.imageAlert);
+//        StorageReference spaceRef = storageRef.child(IMGref);
+//        Glide.with(getApplicationContext()).load(spaceRef.toString()).into(image);
         TextView text= (TextView) view.findViewById(R.id.messageAlert);
         text.setText( "\n"+FirstLingMessage + "\n" + "\n"+ SecondLingMessage + "\n" + "\n"+ ThirdLingMessage);
         Results.setCancelable(false);
@@ -302,7 +315,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
                     }
                 });
         //defining the negative button that will return the user to the main menu
-        Results.setNegativeButton(
+        Results.setNeutralButton(
                 "חזרה לתפריט ראשי",
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -322,29 +335,29 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
             @Override
             public void onShow(DialogInterface arg0) {
                 showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.WHITE);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(Color.WHITE);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(17);
-                showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize(17);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.BLACK);
+                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(15);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextSize(15);
+                if (IsGlutenFree.equals("Y")){
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#3eb959"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#3eb959"));
+                }
+                else if (IsGlutenFree.equals("N"))
+                {
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#ff3943"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#ff3943"));
+                }
+                else{
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#FAEBD7"));
+                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.parseColor("#FAEBD7"));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    showInfo.getButton(AlertDialog.BUTTON_NEGATIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 }
             }
         });
 
-//        //setting the colour of the alert dialog
-//        if (glutenFree.equals("Y")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._GreenLight);
-//        } else if (glutenFree.equals("N")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._redLight);
-//        } else if (glutenFree.equals("M")) {
-//            showInfo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            showInfo.getWindow().setBackgroundDrawableResource(R.color._yellow);
-//        }
         showInfo.show();
     }//buildAlertDialog
 

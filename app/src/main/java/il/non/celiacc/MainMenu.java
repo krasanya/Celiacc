@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import il.non.celiacc.Categories.CategoryGridActivity;
 import il.non.celiacc.Products.SearchProductActivity;
@@ -19,6 +24,13 @@ public class MainMenu extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private TextView UserEmail;
+    private DatabaseReference databaseReferenceUsers;
+    private DatabaseReference databaseReferenceUserEmail;
+    private boolean NotFound;
+    private String parent;
+    private String currentEmail;
+    private String userEmail;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +48,59 @@ public class MainMenu extends AppCompatActivity {
         }
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
+        userEmail=user.getEmail();
 
-        //setting the title of the page
-        UserEmail= (TextView) findViewById(R.id.TitleToPage);
-        UserEmail.setText("ברוכה הבאה "+user.getEmail());
+        NotFound=true;
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference().child("users");
+        databaseReferenceUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //all the children of the table users
+                Iterable <DataSnapshot> children= dataSnapshot.getChildren();
+                //ניגש לכל ילד שתחת הטלבה של היוזרס
+                for (DataSnapshot child : children){
+                    if (NotFound==true){
+                        //שומר את האבא של הערכים הרלוונטים ליוזר הספציפי- הקוד שלו בפיירבייס
+                        parent = child.getKey();
+                        //כל הערכים שתחת היוזר הספציפי
+                        Iterable<DataSnapshot> grandchild= child.getChildren();
+                        for (DataSnapshot Gchild: grandchild){
+
+                            String currentEmail = Gchild.getValue().toString();
+                            if (currentEmail.equals(userEmail)) {
+                                NotFound = false;
+
+                                //retrieving the data of the product IG GLUTEN FREE
+                                databaseReferenceUserEmail = databaseReferenceUsers.child(parent).child("Username");
+                                databaseReferenceUserEmail.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        userName = dataSnapshot.getValue().toString();
+                                        //setting the title of the page
+                                        UserEmail= (TextView) findViewById(R.id.TitleToPage);
+                                        UserEmail.setText("ברוכה הבאה "+userName);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+
+                            }
+                        }
+                    } else break;
+                }
+
+            }//OnDataChange
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         Button Barcodebutton = (Button) findViewById(R.id.buttonBarcode);
         Button Updatebutton = (Button) findViewById(R.id.buttonUpdateUser);

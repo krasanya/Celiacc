@@ -4,8 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/treefive"
-    tools:context="il.non.celiacc.MainActivity">
+    android:background="@drawable/wheat2"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context="il.non.celiacc.MainActivity"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/_White"
+        >
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="70sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="אפליקציית עמותת הצליאק בישראל"
+            android:textAlignment="center"
+            android:textColor="@color/_black" />
+
+    </android.support.v7.widget.Toolbar>
 
     <EditText
         android:id="@+id/etEmailReset"
@@ -80,17 +107,17 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="259dp"
+        android:layout_width="292dp"
         android:layout_height="65dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="80dp"
         android:background="#00000000"
         android:fontFamily="@font/varela_round"
         android:layoutDirection="rtl"
         android:text=" ברוכים הבאים למדריך המזון של עמותת הצליאק בישראל! חברי עמותה יכולים להתחבר עם פרטי החבר"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textColor="@color/_White"
         android:textColorHighlight="@android:color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +128,8 @@
         android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:text="שכחת את הסיסמא?"
-        android:textColor="@color/_black"
+        android:textColor="@color/_White"
+        android:background="#00000000"
         app:layout_constraintBottom_toTopOf="@+id/btLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:textDirection="rtl"
-        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+        android:theme="@style/NoActionBar">
         <activity
             android:name=".MainActivity"
             android:label="אפליקציית עמותת הצליאק בישראל">

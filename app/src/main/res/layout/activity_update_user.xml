@@ -4,8 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/treefive"
+    android:theme="@style/AppTheme.NoActionBar"
+    android:background="@drawable/wheat2"
     tools:context="il.non.celiacc.Users.UpdateUser">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/_White">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="70sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="עדכון פרטי משתמש"
+            android:textAlignment="center"
+            android:textColor="@color/_black"
+            android:textSize="20sp" />
+
+    </android.support.v7.widget.Toolbar>
 
     <EditText
         android:id="@+id/etEmailReset"
@@ -78,9 +106,8 @@
 
     <Button
         android:id="@+id/btUpdateUser"
-        android:layout_width="207dp"
+        android:layout_width="150dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="48dp"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="עדכן"
@@ -89,24 +116,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btBack"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
     <Button
         android:id="@+id/btBack"
-        android:layout_width="92dp"
+        android:layout_width="150dp"
         android:layout_height="51dp"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
         android:text="ביטול"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btUpdateUser"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
-        app:layout_constraintVertical_bias="0.784" />
+        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
     <EditText
         android:id="@+id/etPassAgain"
@@ -146,14 +170,15 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00000000"
         android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="@color/_White"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/etEmailReset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:fontFamily="@font/varela_round" />
 
 </android.support.constraint.ConstraintLayout>

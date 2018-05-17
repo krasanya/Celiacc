@@ -234,7 +234,9 @@ public class UpdateUser extends AppCompatActivity {
                                 databaseReferencePhone.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                       // ((TextView) findViewById(R.id.etPhone)).setText(dataSnapshot.getValue().toString());
+                                        if (dataSnapshot.getValue()!=null) {
+                                            ((TextView) findViewById(R.id.etPhone)).setText(dataSnapshot.getValue().toString());
+                                        }
                                     }
 
                                     @Override

@@ -4,24 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme.NoActionBar"
     tools:context=".Products.tabf">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/_White"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="70sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/toolbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="חיפוש מוצר"
+            android:textAlignment="center"
+            android:textColor="@color/_black"
+            android:textSize="20sp" />
+
+    </android.support.v7.widget.Toolbar>
 
     <Button
         android:id="@+id/btExitToMain"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/buttons"
         android:text="חזרה לתפריט ראשי"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="0dp" />
 
     <AutoCompleteTextView
         android:id="@+id/etPrody"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="213dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
@@ -51,12 +79,11 @@
         android:layout_width="91dp"
         android:layout_height="38dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/buttons"
         android:text="OK"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/etPrody"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btExitToMain" />

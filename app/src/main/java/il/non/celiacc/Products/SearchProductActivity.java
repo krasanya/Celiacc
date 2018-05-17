@@ -260,7 +260,7 @@ public class SearchProductActivity extends AppCompatActivity
         return product;
     }
 
-    public void buildAlertDialog(Product product) {
+    public void buildAlertDialog(final Product product) {
         //building an alert dialog
         AlertDialog.Builder Results = new AlertDialog.Builder(this);
         ProgressDialog progressDialog = new ProgressDialog(this);
@@ -309,8 +309,8 @@ public class SearchProductActivity extends AppCompatActivity
         Results.setView(view);
 
         //defining the positive button that will let the user scan again
-        Results.setPositiveButton(
-                "חזרה לרשימת התוצאות",
+        Results.setNeutralButton(
+                "אישור",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -323,11 +323,21 @@ public class SearchProductActivity extends AppCompatActivity
         showInfo.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface arg0) {
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(Color.WHITE);
-                showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(17);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.BLACK);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.WHITE);
+                showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextSize(17);
+                if (product.getIsGlutenFree().equals("Y")){
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#3eb959"));
+                }
+                else if (product.getIsGlutenFree().equals("N"))
+                {
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#ff3943"));
+                }
+                else{
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setBackgroundColor(Color.parseColor("#FAEBD7"));
+                }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    showInfo.getButton(AlertDialog.BUTTON_POSITIVE).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    showInfo.getButton(AlertDialog.BUTTON_NEUTRAL).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                 }
             }
