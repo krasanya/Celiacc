@@ -20,10 +20,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import il.non.celiacc.Categories.CategoryGridActivity;
-import il.non.celiacc.MySqliteOpenHelper;
+import il.non.celiacc.MainMenu;
 import il.non.celiacc.R;
 
 
@@ -78,15 +77,24 @@ implements SubCategoryAdapter.SubCategoryAdapterOnClickHandler{
                             "Error trying to get subcategories",Toast.LENGTH_SHORT).show();
                 }
             });
-        Button button = findViewById(R.id.btBackToCats);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button buttonMain = findViewById(R.id.btBackTomain);
+            buttonMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intentExit = new Intent(SubCategoryGridActivity.this, CategoryGridActivity.class);//TabsActivity.class);
+                Intent intentExit = new Intent(SubCategoryGridActivity.this, MainMenu.class);
                 startActivity(intentExit);
             }
         });
+            Button button = findViewById(R.id.catFromSub);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                    Intent intentExit = new Intent(SubCategoryGridActivity.this, CategoryGridActivity.class);
+                    startActivity(intentExit);
+                }
+            });
 
     }
 

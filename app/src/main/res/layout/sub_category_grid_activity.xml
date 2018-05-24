@@ -37,22 +37,36 @@
     </android.support.v7.widget.Toolbar>
 
     <Button
-        android:id="@+id/btBackToCats"
+        android:id="@+id/btBackTomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
         android:fontFamily="@font/varela_round"
-        android:text="חזרה לקטגוריות"
+        android:text="חזרה לתפריט ראשי"
         android:textColor="#273746"
         android:textSize="18sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvSubCategory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:layout_height="390dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/_black"
         tools:listitem="@layout/list_item_category" />
+
+    <Button
+        android:id="@+id/catFromSub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/varela_round"
+        android:text="חזרה לקטגוריות"
+        android:textColor="#273746"
+        android:textSize="18sp" />
 
 </LinearLayout>
 
