@@ -134,7 +134,7 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
             }
 
         }
-        }, 1000);
+        }, 1500);
 
 
 
@@ -210,17 +210,17 @@ public class BarcodeScan extends AppCompatActivity implements ZXingScannerView.R
 
                                     }
                                 });
-                                databaseReferenceProductIMG.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        IMGURL = dataSnapshot.getValue().toString();
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
+//                                databaseReferenceProductIMG.addValueEventListener(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                                        IMGURL = dataSnapshot.getValue().toString();
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(DatabaseError databaseError) {
+//
+//                                    }
+//                                });
 
                                 databaseReferenceDateValid.addValueEventListener(new ValueEventListener() {
                                     @Override

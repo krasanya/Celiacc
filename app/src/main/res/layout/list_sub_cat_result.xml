@@ -31,7 +31,7 @@
               android:layout_height="wrap_content"
               android:layout_weight="1"
               android:gravity="center"
-              android:text="חיפוש מוצר"
+              android:text="תוצאות התת קטגוריה"
               android:textAlignment="center"
               android:textColor="@color/_black"
               android:textSize="20sp" />

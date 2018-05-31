@@ -82,7 +82,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/buttons"
-        android:text="OK"
+        android:text="חפש"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/etPrody"
         app:layout_constraintStart_toStartOf="parent"
