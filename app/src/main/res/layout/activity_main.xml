@@ -41,7 +41,7 @@
         android:background="@drawable/edit_texts"
         android:ems="10"
         android:fontFamily="@font/varela_round"
-        android:hint="שם משתמש"
+        android:hint="דואר אלקטרוני"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#273746"
