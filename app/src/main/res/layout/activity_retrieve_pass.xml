@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wheat2"
     android:theme="@style/AppTheme.NoActionBar"
 
     tools:context="il.non.celiacc.RetrievePass">
@@ -90,9 +91,10 @@
         android:layout_width="225dp"
         android:layout_height="77dp"
         android:layout_marginTop="75dp"
+        android:background="@android:color/transparent"
         android:text="לשם איפוס הסיסמא אנא הזן את האימייל שלך. לאחר מכן ישלח לך אימייל עם איפוס סיסמא"
         android:textAlignment="center"
-        android:textColor="@color/_black"
+        android:textColor="@color/_White"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/etEmailReset"
         app:layout_constraintEnd_toEndOf="parent"
